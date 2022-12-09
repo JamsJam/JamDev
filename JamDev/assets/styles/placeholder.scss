@@ -1,0 +1,37 @@
+//* =====================
+//?         Titre
+//* =====================
+
+%title-64{
+    font-size: $title-size-1;
+    font-family: $font-title;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    line-height: $title-size-*1.618px;
+}
+%title-48{
+    font-size: $title-size-2;
+    font-family: $font-title;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    line-height: $title-size-2*1.618px;
+}
+%title-32{
+    font-size: $title-size-3;
+    font-family: $font-title;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    line-height: $title-size-3*1.618px;
+}
+%title-24{
+    font-size: $title-size-4 ;
+    font-family: $font-title;
+    font-weight: 500;
+    letter-spacing: 0.07em;
+    line-height: $title-size-4*1.618px;
+}
+
+//* =====================
+//?         Texte
+//* =====================
+
