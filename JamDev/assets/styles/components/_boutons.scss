@@ -1,0 +1,43 @@
+// @import '../_variable.scss';
+// @import '../_placeholder.scss';
+
+
+.bouton{
+    @extend %flex-center;
+    padding: clamp(0.625rem, 0.4934rem + 0.7018vw, 1.125rem) clamp(1.5625rem, 1.3651rem + 1.0526vw, 2.3125rem);
+    font-family: $font-title;
+    font-size: clamp($text-size-2, 1.1842rem + 0.3509vw , $title-size-4);
+    border-radius: 10px;
+
+
+    &--primary{
+        background-color: $primary-25;
+        color : $secondary-65
+    }
+
+    &--secondary{
+        background-color: $neutral-95;
+        color : $secondary-25;
+        border: $secondary-35 3px solid;
+    }
+
+    &--success{
+        background-color: $success-55;
+        color : $success-95;
+    }
+    &--warning{
+        background-color: $warning-55;
+        color : $warning-95;
+    }
+
+    &--danger{
+        background-color: $danger-55;
+        color : $danger-95;
+    }
+
+    &--info{
+        background-color: $info-55;
+        color : $info-95;
+    }
+
+}

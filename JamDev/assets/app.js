@@ -6,7 +6,17 @@
  */
 
 // any CSS you import will output into a single css file (app.css in this case)
-import './styles/app.scss';
+
+import './styles/font-face.scss';
+// import './styles/_variable.scss';
+// import './styles/_placeholder.scss';
+//?components
+// import './styles/components/_boutons.scss'
+// import './styles/components/_flash.scss'
+import './styles/components-global.scss';
+
+//?typo
+// import './styles/allComponents.scss';
 
 // start the Stimulus application
 import './bootstrap';

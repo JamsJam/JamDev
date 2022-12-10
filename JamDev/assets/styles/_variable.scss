@@ -1,13 +1,6 @@
-@font-face {
-    font-family: Merienda;
-    src: url(../font/Merienda/Merienda-VariableFont_wght.ttf);
-}
-@font-face {
-    font-family: Comfortaa;
-    src: url(../font/Comfortaa/Comfortaa-VariableFont_wght.ttf);
-}
 
-:root{
+
+// :root{
 
     //* =====================
     //?         Color
@@ -27,9 +20,9 @@
     $primary-15: hsl(1,61%,15%) ;
     $primary-5: hsl(1,61%,5%) ;
 
-    body{
-        background-color: $primary-15;
-    }
+    // body{
+    //     background-color: $primary-15;
+    // }
     //!secondary
 
     $secondary-95: hsl(179,78%,95%) ;
@@ -124,19 +117,19 @@
     
     //! Size-title
     
-        $title-size-1 : 4rem;
-        $title-size-2 : 3rem;
+        $title-size-1 : clamp(3rem, 2.8rem + 1.0667vw, 4rem);
+        $title-size-2 : clamp(2.5rem, 2.4rem + 0.5333vw, 3rem);
         $title-size-3 : 2rem;
         $title-size-4 : 1.5rem;
     
     //! Size-texte
-
+    
         $text-size-1 : 1.5rem;
         $text-size-2 : 1.25rem;
         $text-size-3 : 1rem;
         $text-size-4 : 0.875rem;
+    
 
+        
 
-
-
-}
+// }
