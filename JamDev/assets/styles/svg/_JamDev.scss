@@ -1,0 +1,23 @@
+@use '../absctract/' as *;
+
+.header-logo{
+
+    .JamDev{
+        
+        fill-rule:evenodd;
+        fill: $primary-85;
+        clip-rule:evenodd;
+        
+        
+            stroke: $primary-35;
+        stroke-linejoin:round;
+        stroke-miterlimit:2;
+        
+
+        &--J,&--am,&--D,&--ev{
+            fill: $primary-25;
+            fill-rule:nonzero;
+        }
+
+    }
+}

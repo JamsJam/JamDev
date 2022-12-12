@@ -1,0 +1,45 @@
+@use '../absctract/' as *;
+
+header{
+
+    @extend %flex-row-between-center;
+    
+    height: 150px;
+    background-color: $primary-25;
+    padding-inline: clamp(0.875rem, -2.5rem + 7.0313vw, 2rem);
+
+    .navigation{
+        width: 50vw;
+        @extend %flex-row-around-center;
+
+        &__links{
+            @extend %a-reset;
+            color: $primary-85;
+            transition: color ease-in-out 0.3s;
+            
+            //todo hover soulignement
+            &:hover{
+                color : $primary-95;
+            }
+        }
+    }
+
+    .icones__burger{
+        display: none;
+    }
+
+    @media screen and (max-width: 768px) {
+        .navigation{
+            display:none;
+        }
+
+        .icones{
+            display:none;
+            
+            
+            &__burger{
+                display: block;
+            }
+        }
+    }
+}

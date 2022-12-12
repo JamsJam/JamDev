@@ -1,0 +1,12 @@
+@use '../absctract/' as *;
+
+.github{
+    fill:"none";
+
+    &__path{
+        fill-rule:evenodd;
+        clip-rule:evenodd;
+        transform:scale(64);
+        fill:hsl(1deg, 61%, 85%);
+    }
+}
