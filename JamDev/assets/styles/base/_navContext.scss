@@ -1,0 +1,46 @@
+@use "../absctract" as *;
+
+.naviContext{
+    @extend %flex-row-between-center;
+    
+    
+    position: absolute;
+    top: 100%;
+    width: 100vw;
+    padding-block-start: 2rem;
+    transition: left ease-in-out 1s;
+    
+    &--off{
+        left: -100%;
+    }
+    
+    &--on{
+        left: 0;
+        
+    }
+
+
+
+    .margeG,
+    .margeD{
+        background-color: $primary-25;
+        width: 10px;
+        height: 100%;
+    }
+
+    .naviContent{
+        @extend %flex-column-between-center;
+        height: 75vh;
+        
+        &__nav{
+            
+            height: 300px;
+            @extend %flex-column-around-center;
+
+            .navlinks{
+                color: $primary-25;
+            }
+        }
+    }
+
+}

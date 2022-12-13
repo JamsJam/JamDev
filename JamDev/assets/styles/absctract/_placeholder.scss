@@ -4,32 +4,61 @@
 //?         flex
 //* =====================
 
+
 %flex-center{
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-%flex-row-evenly-center{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center;
-}
+//! Flex-row
 
-%flex-row-between-center{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-}
 
-%flex-row-around-center{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-}
+    %flex-row-evenly-center{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+
+    %flex-row-between-center{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    %flex-row-around-center{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+
+//! Flex-column
+
+
+    %flex-column-evenly-center{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+
+    %flex-column-between-center{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    %flex-column-around-center{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+    }
 
 
 
@@ -40,10 +69,3 @@
 //* =====================
 
 
-%a-reset{
-    text-decoration: none;
-    color : black;
-    &::hover{
-        color:none;
-    }
-}

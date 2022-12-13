@@ -1,7 +1,9 @@
 @use '../absctract/' as *;
 
 .github{
-    fill:"none";
+    // fill:"none";
+    width: clamp(3.125rem, -3.25rem + 13.2813vw, 5.25rem);
+    height: clamp(3.125rem, -3.25rem + 13.2813vw, 5.25rem);;
 
     &__path{
         fill-rule:evenodd;

@@ -4,16 +4,16 @@ header{
 
     @extend %flex-row-between-center;
     
-    height: 150px;
+    // height: 150px;
     background-color: $primary-25;
     padding-inline: clamp(0.875rem, -2.5rem + 7.0313vw, 2rem);
+    position: relative;
 
     .navigation{
         width: 50vw;
         @extend %flex-row-around-center;
 
         &__links{
-            @extend %a-reset;
             color: $primary-85;
             transition: color ease-in-out 0.3s;
             

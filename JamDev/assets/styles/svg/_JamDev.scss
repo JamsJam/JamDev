@@ -2,6 +2,10 @@
 
 .header-logo{
 
+    .logo-JamDev{
+        width:clamp(5.25rem, -6rem + 23.4375vw, 9rem);
+        height:clamp(5.25rem, -6rem + 23.4375vw, 9rem);
+    }
     .JamDev{
         
         fill-rule:evenodd;
