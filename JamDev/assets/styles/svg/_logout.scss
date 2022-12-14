@@ -1,4 +1,4 @@
-@use '../absctract/' as *;
+@use '../abstract/' as *;
 
 //todo set path stp logout logo
 
@@ -12,4 +12,10 @@
 .logout{
     width: clamp(3.125rem, -3.25rem + 13.2813vw, 5.25rem);
     height: clamp(2.98rem, -3.08rem + 12.625vw, 5rem);
+}
+
+.naviContext{
+    .logout{
+        fill: $primary-25
+    }
 }

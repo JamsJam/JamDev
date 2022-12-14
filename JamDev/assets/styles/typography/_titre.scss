@@ -1,4 +1,4 @@
-@use '../absctract/' as *;
+@use '../abstract/' as *;
 
 .titre{
     font-family: $font-title;
@@ -8,6 +8,9 @@
         &--64{
             font-size: $title-size-1;
             letter-spacing: 0.03em;
+            text-align: center;
+            margin-block : 1em;
+            padding-inline: 1rem;
         }
     
         &--48{

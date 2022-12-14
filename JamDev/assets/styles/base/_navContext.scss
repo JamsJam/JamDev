@@ -1,14 +1,15 @@
-@use "../absctract" as *;
+@use "../abstract" as *;
 
 .naviContext{
     @extend %flex-row-between-center;
     
-    
+    background-color: white;
     position: absolute;
     top: 100%;
     width: 100vw;
     padding-block-start: 2rem;
     transition: left ease-in-out 1s;
+
     
     &--off{
         left: -100%;
@@ -30,7 +31,7 @@
 
     .naviContent{
         @extend %flex-column-between-center;
-        height: 75vh;
+        height: calc(100vh - 120px);
         
         &__nav{
             

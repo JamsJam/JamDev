@@ -1,7 +1,7 @@
-@use '../absctract/' as *;
+@use '../abstract/' as *;
 
 .texte{
-    font-family: $font-texte;
+    // font-family: $font-texte;
     line-height: 1.618em;
     font-weight: 500;
     

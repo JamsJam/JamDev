@@ -1,4 +1,4 @@
-@use '../absctract/' as *;
+@use '../abstract/' as *;
 
 
 .bouton{
@@ -11,7 +11,7 @@
 
     &--primary{
         background-color: $primary-25;
-        color : $secondary-65
+        color : $secondary-95
     }
 
     &--secondary{

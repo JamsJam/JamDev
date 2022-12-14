@@ -1,4 +1,4 @@
-@use '../absctract/' as *;
+@use '../abstract/' as *;
 
 
 
@@ -11,5 +11,11 @@
     stroke-linejoin:round;
     stroke-miterlimit:2;
 
+}
+
+.naviContext{
+    .login{
+        fill: $primary-25
+    }
 }
 

@@ -1,0 +1,159 @@
+@use '../abstract/' as *;
+
+.accueil__introduction{
+
+    @extend %flex-column-around-center;
+    min-height: 650px;
+    padding-block: 2rem;
+
+    &__texte{
+        width: min(90vw,600px);
+        text-align: center;
+        margin-block-end: 1.5rem;
+    }
+}
+
+.carrousselle-1,
+.carrousselle-2{
+    height: 300px;
+    background-color: $neutral-75;
+    margin-block: 3rem;
+
+    @media screen and (width < 768px){
+        display: none;
+    }
+}
+
+// @use '../abstract/' as *;
+
+.accueil__services{
+
+    @extend %flex-row-around-center;
+    
+
+    &__container{
+        @extend %flex-column-around-center;
+        width: 50vw;
+        min-height: 600px;
+        order:1;
+
+        h1{
+            padding-inline: 1rem;
+            text-align: center;
+        }
+
+    }
+
+    &__texte{
+        width: min(50vw,500px);
+        text-align: center;
+        padding-inline: 1rem;
+    }
+
+
+    &__mockup{
+        
+        height: auto;
+        background-color: $neutral-65;
+        width: 50vw;
+        height: 600px;
+        order:2;
+        
+    }
+
+}
+
+
+.accueil__projets{
+
+    @extend %flex-row-around-center;
+    
+
+    &__container{
+        @extend %flex-column-around-center;
+        width: 50vw;
+        min-height: 600px;
+        order:2;
+
+        h1{
+            padding-inline: 1rem;
+            text-align: center;
+        }
+
+    }
+
+    &__texte{
+        width: min(50vw,500px);
+        text-align: center;
+        padding-inline: 1rem;
+    }
+
+
+    &__mockup{
+        
+        height: auto;
+        background-color: $neutral-65;
+        width: 50vw;
+        height: 600px;
+        order:1;
+        
+    }
+
+}
+
+@media screen and (width < 768px) {
+    .accueil__services,
+    .accueil__projets{
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        &__mockup{
+        
+            height: auto;
+            background-color: $neutral-65;
+            width: 100vw;
+            height: 600px;
+            order:1;
+        }
+
+        &__container{
+            width: 90vw;
+            order:2;
+        }
+
+        &__texte{
+            
+                width: 95vw;
+        }
+        
+    }
+    
+    // .accueil__projets{
+
+    //     display: flex;
+    //     flex-direction: column;
+    //     align-items: center;
+
+    //     &__mockup{
+        
+    //         height: auto;
+    //         background-color: $neutral-65;
+    //         width: 100vw;
+    //         height: 600px;
+    //         order:2;
+    //     }
+
+    //     &__container{
+    //         width: 90vw;
+    //         order:1;
+    //     }
+
+    //     &__texte{
+            
+    //             width: 95vw;
+    //     }
+        
+    // }
+}

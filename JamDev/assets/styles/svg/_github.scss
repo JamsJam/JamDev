@@ -1,4 +1,4 @@
-@use '../absctract/' as *;
+@use '../abstract/' as *;
 
 .github{
     // fill:"none";
@@ -9,6 +9,12 @@
         fill-rule:evenodd;
         clip-rule:evenodd;
         transform:scale(64);
-        fill:hsl(1deg, 61%, 85%);
+        fill:$primary-85;
+    }
+}
+
+.naviContext{
+    .github__path{
+        fill:$primary-25;
     }
 }

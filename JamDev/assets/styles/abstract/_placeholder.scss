@@ -14,6 +14,12 @@
 //! Flex-row
 
 
+    %flex-row-center{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
     %flex-row-evenly-center{
         display: flex;
         flex-direction: row;
@@ -38,6 +44,11 @@
 
 //! Flex-column
 
+    %flex-column-center{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 
     %flex-column-evenly-center{
         display: flex;
