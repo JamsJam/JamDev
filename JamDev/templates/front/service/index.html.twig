@@ -1,20 +1,141 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ServiceController!{% endblock %}
+{% block title %}{{parent()}}Mes Services{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    {#? Section introduction  #}
+        <section id="services__introduction" class="services__introduction">
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'D:/JamdevSite/JamDev/src/Controller/Front/ServiceController.php'|file_link(0) }}">src/Controller/Front/ServiceController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'D:/JamdevSite/JamDev/templates/front/service/index.html.twig'|file_link(0) }}">templates/front/service/index.html.twig</a></code></li>
-    </ul>
-</div>
+
+            <h1 id="services__introduction__titre" class="titre titre--64 idle__titre idle__titre--hide">Mes services</h1>
+
+            <div id="services__introduction__texte" class="services__introduction__texte idle__texte idle__texte--hide">
+
+                <p class="texte texte--24">
+                    Des compétences variées au service de votre projet et une attention particulière a chaque étape du développement, voilà ce que JamDev vous propose pour chaque prestation.
+                </p>
+
+
+            </div>
+
+        </section>
+
+    {#? section presentation #}
+        <section id="services__presentation" class="services__presentation">
+
+            <div id="services__presentation__container1" class="services__presentation__container ctaShow__titre ctaShow__titre--hide">
+
+                <div class="services__presentation__block">
+                    <h2 class="titre titre--24">
+                        Une gestion de projet rigoureuse
+                    </h2>
+                    <p class="texte texte--16">
+                        Dès le début, rien n’est laissé au hasard. Toutes les étapes sont définies et vous avez le contrôle à chaque étape du développement de votre projet.
+                    </p>
+                </div>
+
+                <div class="services__presentation__block">
+                    <h2 class="titre titre--24">
+                        Un soin particulier apporté au referencement
+                    </h2>
+                    <p class="texte texte--16">
+                        Experts en qualité de projet web, l’application des bonnes pratiques en termes de référencement naturel et d’accessibilité est une priorité qui permet à votre projet de toucher un public plus large.
+                    </p>
+                </div>
+
+            </div>
+
+            <div id="services__presentation__container2" class="services__presentation__container ctaShow__texte ctaShow__texte--hide">
+
+                <div class="services__presentation__block">
+                    <h2 class="titre titre--24">
+                        Des compétences adaptée à votre projet
+                    </h2>
+                    <p class="texte texte--16">
+                        Du site vitrine promotionnel à l’application web complète, en passant par le e-commerce, un développement rigoureux orienté aussi bien pour petit et grand écran sera mis en place.
+                    </p>
+                </div>
+
+                <div class="services__presentation__block">
+                    <h2 class="titre titre--24">
+                        Maintenance et mise à jours
+                    </h2>
+                    <p class="texte texte--16">
+                        Les technologies évoluent toujours plus vite ! Les maintenances permettent à votre site de rester à la page, mais également de renouveler le contenu ou l’apparence en fonction de vos activités.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+    
+    {#? Section projet  #}
+        <section id="services__prestation" class="services__prestation">
+
+
+            <div id="services__prestation__img" class="services__prestation__mockup ctaShow__image ctaShow__image--hide"></div>
+
+            <div id="services__prestation__container" class="services__prestation__container">
+
+
+                <h2 id="services__prestation__titre" class="titre titre--32 ctaShow__titre ctaShow__titre--hide">
+                    Un support technique après livraison
+                </h2>
+
+                <div id="services__prestation__texte" class="services__prestation__texte ctaShow__texte ctaShow__texte--hide">
+
+                    <p class="texte texte--16">
+                        Puisque le service ne se limite pas qu’au développement, je peux me rendre disponible dans la mesure du possible et dans un délai raisonnable pour intervenir en cas de problème sur l’utilisation d’une application que j’aurai développé
+                    </p>
+
+
+                </div>
+
+
+                <a href="{{path("app_front_contact")}}" id="services__prestation__bouton" class="bouton bouton--primary ctaShow__bouton ctaShow__bouton--hide">Contact</a>
+            </div>
+
+
+        </section>
+
+{% endblock %}
+{% block script %}
+
+<script>
+
+
+    let introTitre = document.querySelector("#services__introduction__titre");
+    let introTexte = document.querySelector("#services__introduction__texte");
+    
+    let arrayIntro = [introTitre, introTexte];
+
+
+    let servicePresentationContainer1 = document.querySelector("#services__presentation__container1");
+    let servicePresentationContainer2 = document.querySelector("#services__presentation__container2");
+    let sectionPresentation  = document.querySelector("#services__presentation");
+
+    let arrayPresentation = [servicePresentationContainer1, servicePresentationContainer2];
+
+
+    let serviceTitre = document.querySelector("#services__prestation__titre");
+    let serviceTexte = document.querySelector("#services__prestation__texte");
+    let serviceBouton = document.querySelector("#services__prestation__bouton");
+    let serviceImg = document.querySelector("#services__prestation__img");
+    let sectionService  = document.querySelector("#services__prestation");
+
+    let arrayService = [serviceTitre, serviceTexte, serviceBouton,serviceImg];
+
+    {#!  SCRIPT ANIMATION ON SCOLL #}
+
+    window.addEventListener("DOMContentLoaded",introShowAnimate(arrayIntro));
+
+    window.addEventListener("scroll", ()=>{
+        let {scrollTop, clientHeight} = document.documentElement;
+        
+        showAnimeCTA(sectionPresentation,scrollTop, clientHeight*1.5,...arrayPresentation);
+        showAnimeCTA(sectionService,scrollTop, clientHeight*1.5,...arrayService);
+    })
+
+    </script>
 {% endblock %}

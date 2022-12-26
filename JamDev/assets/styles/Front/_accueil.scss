@@ -6,6 +6,14 @@
     min-height: 650px;
     padding-block: 2rem;
 
+    a{
+        margin-block-start: 2rem;
+    }
+
+    h1{
+        color: $primary-35;
+    }
+    
     &__texte{
         width: min(90vw,600px);
         text-align: center;
@@ -17,14 +25,14 @@
 .carrousselle-2{
     height: 300px;
     background-color: $neutral-75;
-    margin-block: 3rem;
+    // margin-block: 3rem;
 
     @media screen and (width < 768px){
         display: none;
     }
 }
 
-// @use '../abstract/' as *;
+
 
 .accueil__services{
 
@@ -37,7 +45,7 @@
         min-height: 600px;
         order:1;
 
-        h1{
+        h2{
             padding-inline: 1rem;
             text-align: center;
         }
@@ -54,7 +62,10 @@
     &__mockup{
         
         height: auto;
-        background-color: $neutral-65;
+        background-image: url(../../images/accueil/mock/mockupS1.webp);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
         width: 50vw;
         height: 600px;
         order:2;
@@ -75,7 +86,7 @@
         min-height: 600px;
         order:2;
 
-        h1{
+        h2{
             padding-inline: 1rem;
             text-align: center;
         }
@@ -92,10 +103,13 @@
     &__mockup{
         
         height: auto;
-        background-color: $neutral-65;
+        background-image: url(../../images/accueil/mock/mockupS2.webp);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
         width: 50vw;
         height: 600px;
-        order:1;
+        order:2;
         
     }
 

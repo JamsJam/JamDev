@@ -1,0 +1,135 @@
+@use '../abstract/' as *;
+
+.services__introduction{
+
+    @extend %flex-column-around-center;
+    min-height: 650px;
+    padding-block: 2rem;
+    
+    h1{
+        color: $primary-35;
+    }
+    
+    &__texte{
+        width: min(90vw,600px);
+        text-align: start;
+        margin-block-end: 1.5rem;
+    }
+}
+
+.services__presentation{
+
+    margin-block-end: 5rem;
+    
+    &__container{
+        @extend %flex-row-evenly-start;
+        padding-inline: 0.5rem;
+        margin-block-end: 2rem;
+
+        h2{
+            color: $primary-35;
+            margin-block-end: 2rem
+        }
+    }
+
+    &__block{
+        @extend %flex-column-between-start;
+        flex-wrap: nowrap;
+        width: 550px;
+        padding-inline: 0.5rem;
+        min-height: 200px;
+
+
+    }
+
+}
+
+.services__prestation{
+
+    @extend %flex-row-around-center;
+    
+
+    &__container{
+        @extend %flex-column-around-center;
+        width: 50vw;
+        min-height: 600px;
+        order:2;
+
+        h2{
+            padding-inline: 1rem;
+            text-align: center;
+            color: $primary-35;
+        }
+
+    }
+
+    &__texte{
+        width: min(50vw,500px);
+        text-align: center;
+        padding-inline: 1rem;
+    }
+
+
+    &__mockup{
+        
+        height: auto;
+        background-image: url(../../images/accueil/mock/mockupS2.webp);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 50vw;
+        height: 600px;
+        order:2;
+        
+    }
+
+}
+
+
+@media screen and (width < 768px ) {
+    .services__presentation{
+
+        &__container{
+            flex-direction: column;
+            align-items: center;
+            padding-inline: 0.5rem;
+            margin-block-end: 2rem
+        }
+        
+        &__block{
+            justify-content: center;
+            width: 71.6vw;
+            padding-inline: 0.5rem;
+            min-height: 200px;
+            margin-block-end: 2rem
+        }
+    }
+
+    .services__prestation{
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        &__mockup{
+        
+            height: auto;
+            background-color: $neutral-65;
+            width: 100vw;
+            height: 600px;
+            order:1;
+        }
+
+        &__container{
+            width: 90vw;
+            order:2;
+        }
+
+        &__texte{
+            
+                width: 95vw;
+        }
+        
+    }
+}
+

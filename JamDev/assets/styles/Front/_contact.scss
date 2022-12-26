@@ -1,0 +1,44 @@
+@use '../abstract/' as *;
+
+.contact__introduction{
+
+    @extend %flex-column-around-center;
+    min-height: 650px;
+    padding-block: 2rem;
+
+    a{
+        margin-block-start: 2rem;
+    }
+    
+    h1{
+        color: $primary-35;
+    }
+    
+    &__texte{
+        width: min(90vw,600px);
+        text-align: start;
+        margin-block-end: 1.5rem;
+    }
+}
+
+#contact__form{
+
+    form{
+
+        @extend %flex-column-center;
+        margin-block-end : 3rem ;
+        
+        input,textarea{
+            width: 80vw;
+            margin-block : 2rem ;   
+        }
+        
+        .form__bouton{
+            
+            display: flex;
+            gap: 2rem;
+            margin-block: 2rem;
+        }
+    }
+
+}

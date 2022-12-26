@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\MailRepository;
+use Doctrine\DBAL\Types\Types;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: MailRepository::class)]
@@ -14,19 +16,39 @@ class Mail
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(
+        message: 'Veuillez entrer votre nom'
+    )]
     private ?string $nom = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(
+        message: 'Veuillez entrer votre prenom'
+    )]
     private ?string $prenom = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(
+        message: 'Veuillez entrer votre email'
+    )]
+    #[Assert\Regex(
+        pattern: "/^[\w\.]+@([\w-]+\.)+[\w-]{2,4}$/",
+        match: true,
+        message: 'Veuillez entrer une adresse mail valide',
+    )]
     private ?string $mail = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(
+        message: 'Veuillez indiquer la raison de votre message'
+    )]
     private ?string $sujet = null;
 
     #[ORM\Column(length: 255)]
     private ?string $message = null;
+
+    #[ORM\Column(type: Types::DATE_IMMUTABLE)]
+    private ?\DateTimeImmutable $sendAt = null;
 
     public function getId(): ?int
     {
@@ -89,6 +111,18 @@ class Mail
     public function setMessage(string $message): self
     {
         $this->message = $message;
+
+        return $this;
+    }
+
+    public function getSendAt(): ?\DateTimeImmutable
+    {
+        return $this->sendAt;
+    }
+
+    public function setSendAt(\DateTimeImmutable $sendAt): self
+    {
+        $this->sendAt = $sendAt;
 
         return $this;
     }

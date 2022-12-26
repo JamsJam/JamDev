@@ -1,20 +1,189 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ContactController!{% endblock %}
+{% block title %}{{parent()}}{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    {#? Section introduction  #}
+        <section id="contact__introduction" class="contact__introduction">
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'D:/JamdevSite/JamDev/src/Controller/Front/ContactController.php'|file_link(0) }}">src/Controller/Front/ContactController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'D:/JamdevSite/JamDev/templates/front/contact/index.html.twig'|file_link(0) }}">templates/front/contact/index.html.twig</a></code></li>
-    </ul>
-</div>
+            <h1 id="contact__introduction__titre" class="titre titre--64 idle__titre idle__titre--hide">Formulaire de contact</h1>
+
+            <div id="contact__introduction__texte" class="contact__introduction__texte idle__texte idle__texte--hide">
+
+                <p class="texte texte--24">
+                    Vous avez une idée à faire valoir ?
+                </p>
+
+                <p class="texte texte--24">
+                    Un projets web à réalisé ?
+                </p>
+
+                <p class="texte texte--24">
+                    Un site a réalisé ?
+                </p>
+
+                <p class="texte texte--24">
+                    Demander dès maintenant un devis via ce formulaire de contact
+                </p>
+
+            </div>
+
+        </section>
+
+    {#? section formulaire  #}
+    {# todo : animation de la section on croll #}
+        <section id="contact__form">
+
+
+            {{ form_start(form) }}
+
+                {% for item in form.children |slice(0,5) %}
+                    {% if (item.vars.errors|length > 0) %}
+                        
+                        <div class="flash flash--danger">
+                            {{ form_errors(item) }}
+                        </div>
+                    
+                    {% endif %}
+                {% endfor %}
+
+
+                
+                <div>
+            {#! Form nom  #}
+                    {% if form.nom.vars.valid == true and form.nom.vars.value|length > 0 %}
+                        {{ form_widget(form.nom,{ 'attr': {'class': 'input__text input--success '} } )}}
+                        
+                    {% else %}
+                        
+                        {% if form_errors(form.nom) %}
+
+                            {{ form_widget(form.nom,{ 'attr': {'class': 'input__text input--danger '} } )}}
+                        
+                        {% else %}
+                        
+                            {% if form.nom.vars.value|length == 0 %}
+                        
+                                {{ form_widget(form.nom,{ 'attr': {'class': 'input__text input--empty '} } )}}
+
+                            {% endif %}
+
+                            
+                        {% endif %}
+                    {% endif %}
+            {#! Form prenom  #}
+                    {% if form.prenom.vars.valid == true and form.prenom.vars.value|length > 0 %}
+                        {{ form_widget(form.prenom,{ 'attr': {'class': 'input__text input--success '} } )}}
+                        
+                    {% else %}
+                        
+                        {% if form_errors(form.prenom) %}
+
+                            {{ form_widget(form.prenom,{ 'attr': {'class': 'input__text input--danger '} } )}}
+                        
+                        {% else %}
+                        
+                            {% if form.prenom.vars.value|length == 0 %}
+                        
+                                {{ form_widget(form.prenom,{ 'attr': {'class': 'input__text input--empty '} } )}}
+
+                            {% endif %}
+
+                            
+                        {% endif %}
+                    {% endif %}
+                </div>
+            {#! Form mail  #}
+                {% if form.mail.vars.valid == true and form.mail.vars.value|length > 0 %}
+                    {{ form_widget(form.mail,{ 'attr': {'class': 'input__text input--success '} } )}}
+                    
+                {% else %}
+                    
+                    {% if form_errors(form.mail) %}
+
+                        {{ form_widget(form.mail,{ 'attr': {'class': 'input__text input--danger '} } )}}
+                    
+                    {% else %}
+                    
+                        {% if form.mail.vars.value|length == 0 %}
+                    
+                            {{ form_widget(form.mail,{ 'attr': {'class': 'input__text input--empty '} } )}}
+
+                        {% endif %}
+
+                        
+                    {% endif %}
+                {% endif %}
+                    
+            {#! Form sujet  #}
+                {% if form.sujet.vars.valid == true and form.sujet.vars.value|length > 0 %}
+                    {{ form_widget(form.sujet,{ 'attr': {'class': 'input__text input--success '} } )}}
+                    
+                {% else %}
+                    
+                    {% if form_errors(form.sujet) %}
+
+                        {{ form_widget(form.sujet,{ 'attr': {'class': 'input__text input--danger '} } )}}
+                    
+                    {% else %}
+                    
+                        {% if form.sujet.vars.value|length == 0 %}
+                    
+                            {{ form_widget(form.sujet,{ 'attr': {'class': 'input__text input--empty '} } )}}
+
+                        {% endif %}
+
+                        
+                    {% endif %}
+                {% endif %}
+                    
+            {#! Form message  #}
+                {% if form.message.vars.valid == true and form.message.vars.value|length > 0 %}
+                    {{ form_widget(form.message,{ 'attr': {'class': 'input__textarea input--success '} } )}}
+                    
+                {% else %}
+                    
+                    {% if form_errors(form.message) %}
+
+                        {{ form_widget(form.message,{ 'attr': {'class': 'input__textarea input--danger '} } )}}
+                    
+                    {% else %}
+                    
+                        {% if form.message.vars.value|length == 0 %}
+                    
+                            {{ form_widget(form.message,{ 'attr': {'class': 'input__textarea input--empty '} } )}}
+
+                        {% endif %}
+
+                        
+                    {% endif %}
+                {% endif %}
+
+                    <div class="form__bouton">
+                        {{ form_widget(form.envoyer) }}
+                        <a href="{{path("app_front_accueil")}}" class="bouton bouton--secondary">retour</a>
+                    </div>
+                    
+                
+            {{ form_end(form) }}
+
+        </section>
+{% endblock %}
+
+{% block script %}
+
+<script>
+
+    let introTitre = document.querySelector("#contact__introduction__titre")
+    let introTexte = document.querySelector("#contact__introduction__texte")
+    let introBouton = document.querySelector("#contact__introduction__bouton")
+    let arrayIntro = [introTitre, introTexte, introBouton]
+
+    {#!  SCRIPT ANIMATION ON SCOLL #}
+
+    window.addEventListener("DOMContentLoaded",introShowAnimate(arrayIntro));
+
+
+</script>
 {% endblock %}

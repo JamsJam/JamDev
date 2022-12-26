@@ -9,10 +9,11 @@
     width: 100vw;
     padding-block-start: 2rem;
     transition: left ease-in-out 1s;
+    z-index: 1;
 
     
     &--off{
-        left: -100%;
+        left: -101%;
     }
     
     &--on{

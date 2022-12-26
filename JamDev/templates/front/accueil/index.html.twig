@@ -4,12 +4,19 @@
 
 {% block body %}
 
+
 {#? Section introduction  #}
-<section class="accueil__introduction">
+<section id="accueil__introduction" class="accueil__introduction">
+        {#!  Confirmation envoie mail de contact #}
+        {% for message in app.flashes('mailConfirm') %}
+            <div class="flash flash--success">
+                {{ message }}
+            </div>
+        {% endfor %}
 
-    <h1 class="titre titre--64">Développeur Web Independant</h1>
+    <h1 id="accueil__introduction__titre" class="titre titre--64 idle__titre idle__titre--hide">Développeur Web Independant</h1>
 
-    <div class="accueil__introduction__texte">
+    <div id="accueil__introduction__texte" class="accueil__introduction__texte idle__texte idle__texte--hide">
 
         <p class="texte texte--24">
             Passioné par le développement, je vous accompagne dès la conception de votre site,  afin de réaliser un projet qui vous ressemble.
@@ -25,30 +32,42 @@
 
     </div>
 
-    <a href="#" class="bouton bouton--primary">Accueil</a>
+    <a id="accueil__introduction__bouton" href="{{path("app_front_contact")}}" class="bouton bouton--primary  idle__bouton idle__bouton--hide">Contact</a>
 </section>
 
 {#? Carrousselle 1  #}
-<section class="carrousselle-1">
+{# <section class="carrousselle-1">
+
+    <div class="carousel__slider">
+        <ul class="carousel__list">
+            <li class="carousel__item"><img src="" alt=""></li>
+            <li class="carousel__item"><img src="" alt=""></li>
+            <li class="carousel__item"><img src="" alt=""></li>
+        </ul>
+    </div>
+    {# <div><img src="" alt=""></div>
     <div><img src="" alt=""></div>
     <div><img src="" alt=""></div>
+
     <div><img src="" alt=""></div>
     <div><img src="" alt=""></div>
-    <div><img src="" alt=""></div>
+    <div><img src="" alt=""></div> 
+
 </section>
+#}
 
 {#? Section service  #}
-<section class="accueil__services">
+<section   class="accueil__services">
 
 
-    <div class="accueil__services__mockup"><img src="" alt="" class="servicesMockup"></div>
+    <div id="accueil__service__img"  class="accueil__services__mockup ctaShow__image ctaShow__image--hide"></div>
 
-    <div class="accueil__services__container">
+    <div id="accueil__service__container" class="accueil__services__container">
 
 
-        <h1 class="titre titre--32">Des compétences adaptées à vos besoins</h1>
+        <h2 id="accueil__service__titre" class="titre titre--32 ctaShow__titre ctaShow__titre--hide">Des compétences adaptées à vos besoins</h1>
 
-        <div class="accueil__services__texte">
+        <div id="accueil__service__texte" class="accueil__services__texte ctaShow__texte ctaShow__texte--hide">
 
             <p class="texte texte--16">
                 Au travers mes différentes expériences, j’ai accumulé un large panel de compétence qui me permet de répondre à vos attentes.
@@ -61,7 +80,7 @@
         </div>
 
 
-        <a href="" class="bouton bouton--primary">Mes services</a>
+        <a id="accueil__service__bouton" href="{{path("app_front_service")}}" class="bouton bouton--primary ctaShow__bouton ctaShow__bouton--hide">Mes services</a>
     </div>
 
     
@@ -69,43 +88,90 @@
 </section>
 
 {#? Carrousselle 2  #}
-<section class="carrousselle-2">
+
+{# 
+<section class="carrousselle-2"> 
     <div><img src="" alt=""></div>
     <div><img src="" alt=""></div>
     <div><img src="" alt=""></div>
     <div><img src="" alt=""></div>
     <div><img src="" alt=""></div>
 </section>
+#}
+
+
 
 {#? Section projet  #}
 <section class="accueil__projets">
 
 
-    <div class="accueil__projets__mockup"><img src="" alt="" class="projetsMockup"></div>
+    <div id="accueil__projets__img" class="accueil__projets__mockup ctaShow__image ctaShow__image--hide"></div>
 
-    <div class="accueil__projets__container">
+    <div id="accueil__projets__container" class="accueil__projets__container">
 
 
-        <h1 class="titre titre--32">Des projets aussi divers que variés</h1>
+        <h2 id="accueil__projets__titre" class="titre titre--32 ctaShow__titre ctaShow__titre--hide">Des projets aussi divers que variés</h1>
 
-        <div class="accueil__projets__texte">
+        <div id="accueil__projets__texte" class="accueil__projets__texte ctaShow__texte ctaShow__texte--hide">
 
             <p class="texte texte--16">
                 Aussi éparses que peuvent être mes projets, qu’ils soient personnels ou sollicités, le point de convergence est la confiance en mes capacités d’écoute et d’adaptation à la mission données
             </p>
 
-            {# <p class="texte texte--16">
-                Du site complet à la simple interface vitrine en passant par l’adaptation mobile, vous pourrez voir via ce lien ci-dessous l’ensemble de mes prestations
-            </p> #}
 
         </div>
 
 
-        <a href="" class="bouton bouton--primary">Mes projets</a>
+        <a href="" id="accueil__projets__bouton" class="bouton bouton--primary ctaShow__bouton ctaShow__bouton--hide">Mes projets</a>
     </div>
 
     
 
 </section>
 
+{% endblock %}
+{% block script %}
+
+<script>
+
+    let introTitre = document.querySelector("#accueil__introduction__titre")
+    let introTexte = document.querySelector("#accueil__introduction__texte")
+    let introBouton = document.querySelector("#accueil__introduction__bouton")
+    let arrayIntro = [introTitre, introTexte, introBouton]
+
+    let serviceTitre = document.querySelector("#accueil__service__titre")
+    let serviceTexte = document.querySelector("#accueil__service__texte")
+    let serviceBouton = document.querySelector("#accueil__service__bouton")
+    let serviceImg = document.querySelector("#accueil__service__img")
+
+    let arrayService = [serviceTitre, serviceTexte, serviceBouton,serviceImg]
+
+    let sectionService  = document.querySelector("#accueil__service__container")
+
+    let projetTitre = document.querySelector("#accueil__projets__titre")
+    let projetTexte = document.querySelector("#accueil__projets__texte")
+    let projetBouton = document.querySelector("#accueil__projets__bouton")
+    let projetImg = document.querySelector("#accueil__projets__img")
+    let arrayProjet = [projetTitre, projetTexte, projetBouton, projetImg]
+
+    let sectionProjet  = document.querySelector("#accueil__projets__container")
+
+    {#!  SCRIPT ANIMATION ON SCOLL #}
+
+
+    window.addEventListener("DOMContentLoaded",introShowAnimate(arrayIntro));
+    
+    
+    
+   
+
+    window.addEventListener("scroll", ()=>{
+        let {scrollTop, clientHeight} = document.documentElement;
+        
+        showAnimeCTA(sectionService,scrollTop, clientHeight*1.5,...arrayService)
+        showAnimeCTA(sectionProjet,scrollTop, clientHeight*1.05,...arrayProjet)
+        
+    })
+
+</script>
 {% endblock %}
