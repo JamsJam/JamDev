@@ -1,20 +1,227 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ProjetsController!{% endblock %}
+{% block title %}{{parent() }}Mes projets{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    {#? Section introduction  #}
+        <section id="projets__introduction" class="projets__introduction">
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+            <h1 id="projets__introduction__titre" class="titre titre--64 idle__titre idle__titre--hide">Développeur Web Independant</h1>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'D:/JamdevSite/JamDev/src/Controller/Front/ProjetsController.php'|file_link(0) }}">src/Controller/Front/ProjetsController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'D:/JamdevSite/JamDev/templates/front/projets/index.html.twig'|file_link(0) }}">templates/front/projets/index.html.twig</a></code></li>
-    </ul>
-</div>
+            <div id="projets__introduction__texte" class="projets__introduction__texte idle__texte idle__texte--hide">
+
+                <p class="texte texte--24">
+                    Passioné par le développement, je vous accompagne dès la conception de votre site,  afin de réaliser un projet qui vous ressemble.
+                </p>
+
+                <p class="texte texte--24">
+                    Vous souhaitez étendre votre activité ? Avoir et dynamiser votre présence en ligne ?
+                </p>
+
+                <p class="texte texte--24">
+                    Contactez-moi via le lien ci-dessous pour donner vie à votre projet.
+                </p>
+
+            </div>
+
+        </section>
+
+    {#? Section Projet site vitrine  #}
+        <section   class="projets__vitrines">
+
+
+            <div id="projets__vitrines__img"  class="projets__vitrines__mockup ctaShow__image ctaShow__image--hide"></div>
+
+            <div id="projets__vitrines__container" class="projets__vitrines__container">
+
+
+                <h2 id="projets__vitrines__titre" class="titre titre--32 ctaShow__titre ctaShow__titre--hide">Des compétences adaptées à vos besoins</h1>
+
+                <div id="projets__vitrines__texte" class="projets__vitrines__texte ctaShow__texte ctaShow__texte--hide">
+
+                    <p class="texte texte--16">
+                        Au travers mes différentes expériences, j’ai accumulé un large panel de compétence qui me permet de répondre à vos attentes.
+                    </p>
+
+                    <p class="texte texte--16">
+                        Du site complet à la simple interface vitrine en passant par l’adaptation mobile, vous pourrez voir via ce lien ci-dessous l’ensemble de mes prestations
+                    </p>
+
+                </div>
+
+
+                <a id="projets__vitrines__bouton" href="{{path("app_front_service")}}" class="bouton bouton--primary ctaShow__bouton ctaShow__bouton--hide">Mes services</a>
+            </div>
+
+            
+
+        </section>
+
+
+
+
+    {#? Section projet site complet #}
+        <section class="projets__siteComplet">
+
+
+            <div id="projets__siteComplet__img" class="projets__siteComplet__mockup ctaShow__image ctaShow__image--hide"></div>
+
+            <div id="projets__siteComplet__container" class="projets__siteComplet__container">
+
+
+                <h2 id="projets__siteComplet__titre" class="titre titre--32 ctaShow__titre ctaShow__titre--hide">Des projets aussi divers que variés</h1>
+
+                <div id="projets__siteComplet__texte" class="projets__siteComplet__texte ctaShow__texte ctaShow__texte--hide">
+
+                    <p class="texte texte--16">
+                        Aussi éparses que peuvent être mes projets, qu’ils soient personnels ou sollicités, le point de convergence est la confiance en mes capacités d’écoute et d’adaptation à la mission données
+                    </p>
+
+
+                </div>
+
+
+                <a href="" id="projets__siteComplet__bouton" class="bouton bouton--primary ctaShow__bouton ctaShow__bouton--hide">Mes projets</a>
+            </div>
+
+            
+
+        </section>
+
+    {#? Section projet interface  #}
+        <section   class="projets__interfaces">
+
+
+            <div id="projets__interfaces__img"  class="projets__interfaces__mockup ctaShow__image ctaShow__image--hide"></div>
+
+            <div id="projets__interfaces__container" class="projets__interfaces__container">
+
+
+                <h2 id="projets__interfaces__titre" class="titre titre--32 ctaShow__titre ctaShow__titre--hide">Des compétences adaptées à vos besoins</h1>
+
+                <div id="projets__interfaces__texte" class="projets__interfaces__texte ctaShow__texte ctaShow__texte--hide">
+
+                    <p class="texte texte--16">
+                        Au travers mes différentes expériences, j’ai accumulé un large panel de compétence qui me permet de répondre à vos attentes.
+                    </p>
+
+                    <p class="texte texte--16">
+                        Du site complet à la simple interface vitrine en passant par l’adaptation mobile, vous pourrez voir via ce lien ci-dessous l’ensemble de mes prestations
+                    </p>
+
+                </div>
+
+
+                <a id="projets__interfaces__bouton" href="{{path("app_front_service")}}" class="bouton bouton--primary ctaShow__bouton ctaShow__bouton--hide">Mes services</a>
+            </div>
+
+            
+
+        </section>
+
+
+
+
+    {#? Section projet autre #}
+        <section class="projets__autre">
+
+
+            <div id="projets__autre__img" class="projets__autre__mockup ctaShow__image ctaShow__image--hide"></div>
+
+            <div id="projets__autre__container" class="projets__autre__container">
+
+
+                <h2 id="projets__autre__titre" class="titre titre--32 ctaShow__titre ctaShow__titre--hide">Des projets aussi divers que variés</h1>
+
+                <div id="projets__autre__texte" class="projets__autre__texte ctaShow__texte ctaShow__texte--hide">
+
+                    <p class="texte texte--16">
+                        Aussi éparses que peuvent être mes projets, qu’ils soient personnels ou sollicités, le point de convergence est la confiance en mes capacités d’écoute et d’adaptation à la mission données
+                    </p>
+
+
+                </div>
+
+
+                <a href="" id="projets__autre__bouton" class="bouton bouton--primary ctaShow__bouton ctaShow__bouton--hide">Mes projets</a>
+            </div>
+
+            
+
+        </section>
+{% endblock %}
+{% block script %}
+
+    <script>
+
+        {#? Variable intro #}
+            let introTitre = document.querySelector("#projets__introduction__titre")
+            let introTexte = document.querySelector("#projets__introduction__texte")
+            // let introBouton = document.querySelector("#projets__introduction__bouton")
+            let arrayIntro = [introTitre, introTexte]
+        
+        {#? Variable vitrine #}
+            let sectionVitrine  = document.querySelector("#projets__vitrines__container")
+
+            let vitrineTitre = document.querySelector("#projets__vitrines__titre")
+            let vitrineTexte = document.querySelector("#projets__vitrines__texte")
+            let vitrineBouton = document.querySelector("#projets__vitrines__bouton")
+            let vitrineImg = document.querySelector("#projets__vitrines__img")
+
+            let arrayVitrine = [vitrineTitre, vitrineTexte, vitrineBouton,vitrineImg]
+
+        {#? Variable complet #}
+            let sectionSiteComplet  = document.querySelector("#projets__siteComplet__container")
+
+            let siteCompletTitre = document.querySelector("#projets__siteComplet__titre")
+            let siteCompletTexte = document.querySelector("#projets__siteComplet__texte")
+            let siteCompletBouton = document.querySelector("#projets__siteComplet__bouton")
+            let siteCompletImg = document.querySelector("#projets__siteComplet__img")
+
+            let arraySiteComplet = [siteCompletTitre ,siteCompletTexte ,siteCompletBouton,siteCompletImg]
+
+        
+        {#? Variable interface #}
+            let sectionInterface  = document.querySelector("#projets__interfaces__container")
+
+            let interfaceTitre = document.querySelector("#projets__interfaces__titre")
+            let interfaceTexte = document.querySelector("#projets__interfaces__texte")
+            let interfaceBouton = document.querySelector("#projets__interfaces__bouton")
+            let interfaceImg = document.querySelector("#projets__interfaces__img")
+
+            let arrayInterface = [interfaceTitre, interfaceTexte, interfaceBouton,interfaceImg]
+
+        {#? Variable autre #}
+            let sectionAutre  = document.querySelector("#projets__autre__container")
+
+            let autreTitre = document.querySelector("#projets__autre__titre")
+            let autreTexte = document.querySelector("#projets__autre__texte")
+            let autreBouton = document.querySelector("#projets__autre__bouton")
+            let autreImg = document.querySelector("#projets__autre__img")
+
+            let arrayAutre = [autreTitre ,autreTexte ,autreBouton,autreImg]
+
+
+
+
+        {#!  SCRIPT ANIMATION ON SCOLL #}
+
+
+        window.addEventListener("DOMContentLoaded",introShowAnimate(arrayIntro));
+        
+        
+        
+    
+
+        window.addEventListener("scroll", ()=>{
+            let {scrollTop, clientHeight} = document.documentElement;
+            
+            showAnimeCTA(sectionVitrine,scrollTop, clientHeight*1.5,...arrayVitrine)
+            showAnimeCTA(sectionSiteComplet,scrollTop, clientHeight*1.05,...arraySiteComplet)
+            showAnimeCTA(sectionInterface,scrollTop, clientHeight*1.05,...arrayInterface)
+            showAnimeCTA(sectionAutre,scrollTop, clientHeight*1.05,...arrayAutre)
+            
+        })
+
+    </script>
 {% endblock %}

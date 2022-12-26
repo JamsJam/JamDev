@@ -1,1 +1,137 @@
 @use '../abstract/' as *;
+
+.projets__introduction{
+
+    @extend %flex-column-around-center;
+    min-height: 650px;
+    padding-block: 2rem;
+
+    a{
+        margin-block-start: 2rem;
+    }
+
+    h1{
+        color: $primary-35;
+    }
+    
+    &__texte{
+        width: min(90vw,600px);
+        text-align: center;
+        margin-block-end: 1.5rem;
+    }
+}
+
+.projets__vitrines,
+.projets__interfaces{
+
+    @extend %flex-row-around-center;
+    
+
+    &__container{
+        @extend %flex-column-around-center;
+        width: 50vw;
+        min-height: 600px;
+        order:1;
+
+        h2{
+            padding-inline: 1rem;
+            text-align: center;
+        }
+
+    }
+
+    &__texte{
+        width: min(50vw,500px);
+        text-align: center;
+        padding-inline: 1rem;
+    }
+
+
+    &__mockup{
+        
+        height: auto;
+        background-image: url(../../images/accueil/mock/mockupS1.webp);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 50vw;
+        height: 600px;
+        order:2;
+        
+    }
+
+}
+
+
+.projets__siteComplet,
+.projets__autre{
+
+    @extend %flex-row-around-center;
+    
+
+    &__container{
+        @extend %flex-column-around-center;
+        width: 50vw;
+        min-height: 600px;
+        order:2;
+
+        h2{
+            padding-inline: 1rem;
+            text-align: center;
+        }
+
+    }
+
+    &__texte{
+        width: min(50vw,500px);
+        text-align: center;
+        padding-inline: 1rem;
+    }
+
+
+    &__mockup{
+        
+        height: auto;
+        background-image: url(../../images/accueil/mock/mockupS2.webp);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 50vw;
+        height: 600px;
+        order:2;
+        
+    }
+
+}
+
+@media screen and (width < 768px) {
+    .projets__vitrines,
+    .projets__interfaces,
+    .projets__siteComplet,
+    .projets__autre{
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        &__mockup{
+        
+            height: auto;
+            background-color: $neutral-65;
+            width: 100vw;
+            height: 600px;
+            order:1;
+        }
+
+        &__container{
+            width: 90vw;
+            order:2;
+        }
+
+        &__texte{
+            
+                width: 95vw;
+        }
+        
+    }
+}

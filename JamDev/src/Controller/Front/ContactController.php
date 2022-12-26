@@ -73,7 +73,7 @@ class ContactController extends AbstractController
 
 
             //?redirection vers accueil
-            return $this->render('front/accueil/index.html.twig', [
+            return $this->redirectToRoute('app_front_accueil', [
                 
             ]);
         }
