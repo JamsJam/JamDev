@@ -1,0 +1,61 @@
+@use '../abstract/' as *;
+
+.connexion{
+    &__intro{
+        h1{
+            color: $primary-15;
+        }
+    }
+
+    &__form{
+        @extend %flex-column-around-center;
+        
+        height: 500px;
+        width: max(70vw,300px);
+
+        margin-inline: auto;
+        margin-block-end: 5rem;
+
+        background-color: $primary-15;
+
+    }
+
+    &__input{
+        
+        input[type=text],
+        input[type=password]{
+            width: max(60vw,250px);
+            margin-block: 0.5rem;
+        }
+        input[type=text]{
+            margin-block-end: 2rem;
+        }
+
+        label{
+            color: $primary-95
+        }
+        a{
+            color: $secondary-55;
+
+            &:hover{
+                color: $secondary-85;
+            }
+        }
+    }
+
+    &__bouton{
+        @extend %flex-row-around-center;
+        flex-wrap: wrap;
+        width: max(45vw,280px);
+        button,a{
+            margin-block: 0.5rem ;
+        }
+    }
+}
+
+@media screen and (width < 700px) {
+    .connexion__bouton{
+        flex-direction: column;
+
+    }
+}

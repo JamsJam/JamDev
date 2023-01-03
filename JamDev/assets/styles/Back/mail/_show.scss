@@ -1,0 +1,41 @@
+@use "../../abstract" as *;
+
+.mailShow {
+    min-height: 50vh;
+    width: max(80vw,320px);
+    margin-inline: auto;
+    margin-block-end:2rem ;
+    
+    &__expeditaire{
+        @extend %flex-column-center;
+        margin-block-end: 2rem;
+
+        h2{
+            align-self: center;
+        }
+        &__info{
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+        }
+    }
+
+
+    &__message{
+        @extend %flex-column-center;
+        p{
+            padding-inline: 1rem;
+
+        }
+        
+    }
+
+    &__boutons{
+        @extend %flex-center;
+        // flex-wrap: wrap;
+        gap: 1rem;
+        margin-block: 4rem;
+    }
+
+}

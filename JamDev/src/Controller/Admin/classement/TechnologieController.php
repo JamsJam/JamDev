@@ -34,7 +34,7 @@ class TechnologieController extends AbstractController
             return $this->redirectToRoute('app_admin_classement_technologie_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('admin/classement/technologie/new.html.twig', [
+        return $this->render('admin/classement/technologie/new.html.twig', [
             'technologie' => $technologie,
             'form' => $form,
         ]);

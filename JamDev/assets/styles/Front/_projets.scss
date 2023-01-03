@@ -2,13 +2,10 @@
 
 .projets__introduction{
 
-    @extend %flex-column-around-center;
-    min-height: 650px;
+    @extend %flex-column-center;
+    min-height: 550px;
     padding-block: 2rem;
 
-    a{
-        margin-block-start: 2rem;
-    }
 
     h1{
         color: $primary-35;
@@ -17,7 +14,7 @@
     &__texte{
         width: min(90vw,600px);
         text-align: center;
-        margin-block-end: 1.5rem;
+
     }
 }
 

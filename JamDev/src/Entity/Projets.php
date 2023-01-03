@@ -22,8 +22,8 @@ class Projets
     #[ORM\Column(length: 255)]
     private ?string $lien = null;
 
-    #[ORM\Column(type: Types::ARRAY)]
-    private array $images = [];
+    #[ORM\Column(length: 255)]
+    private ?string $images = null;
 
     #[ORM\Column(length: 255)]
     private ?string $description = null;
@@ -69,12 +69,12 @@ class Projets
         return $this;
     }
 
-    public function getImages(): array
+    public function getImages(): ?string
     {
         return $this->images;
     }
 
-    public function setImages(array $images): self
+    public function setImages(string $images): self
     {
         $this->images = $images;
 

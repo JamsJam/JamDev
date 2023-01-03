@@ -3,7 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Projets;
-use App\Form\Projets1Type;
+use App\Form\ProjetsType;
 use App\Repository\ProjetsRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -29,6 +29,47 @@ class ProjetsController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $dossier = [1 => "siteComplet", 2 => "interface" ,3 =>"POC", 4 => "autres" ];
+            $nomImages = [];
+
+            //*     =====================================
+            //*     =====================================
+            //todo      Enregistrement des images en bdd
+            //*     =====================================
+            //*     =====================================
+            
+            for ($i=0; $i < 3; $i++) { 
+
+                $file = $form->get('image'.$i+1)->getData();
+                
+                //? 1) renommer les images
+                $fileNewName = date("YmdHis").'-'.Uniqid().'-'.rand(100,999).'-'.$file->getClientOriginalName();
+                
+                //? 2) determiner un dossier pour chaque categorie
+                //? 3) copier les images dans le dossier
+                $file->move(
+                    $this->getParameter($dossier[$form->get("categorie")->getData()->getId()]),
+                    $fileNewName
+                );
+                //? 4) recuperer les noms des images,  
+                array_push($nomImages, $fileNewName);
+
+            }
+            //? 5)  setImages 
+            $projet->setImages(implode("--", $nomImages));
+            dd($projet);
+
+            
+            //*     =================================
+            //!     =================================
+            //*     =================================
+            
+            
+            
+
+
+
+
             $projetsRepository->save($projet, true);
 
             return $this->redirectToRoute('app_admin_projets_index', [], Response::HTTP_SEE_OTHER);

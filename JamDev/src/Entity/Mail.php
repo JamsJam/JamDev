@@ -50,6 +50,9 @@ class Mail
     #[ORM\Column(type: Types::DATE_IMMUTABLE)]
     private ?\DateTimeImmutable $sendAt = null;
 
+    #[ORM\Column]
+    private ?bool $vu = false;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -123,6 +126,18 @@ class Mail
     public function setSendAt(\DateTimeImmutable $sendAt): self
     {
         $this->sendAt = $sendAt;
+
+        return $this;
+    }
+
+    public function isVu(): ?bool
+    {
+        return $this->vu;
+    }
+
+    public function setVu(bool $vu): self
+    {
+        $this->vu = $vu;
 
         return $this;
     }

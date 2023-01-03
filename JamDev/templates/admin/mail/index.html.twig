@@ -1,43 +1,44 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Mail index{% endblock %}
+{% block title %}Mail index
+{% endblock %}
 
 {% block body %}
-    <h1>Mail index</h1>
+	<h1 class="titre titre--64">Messagerie</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nom</th>
-                <th>Prenom</th>
-                <th>Mail</th>
-                <th>Sujet</th>
-                <th>Message</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for mail in mails %}
-            <tr>
-                <td>{{ mail.id }}</td>
-                <td>{{ mail.nom }}</td>
-                <td>{{ mail.prenom }}</td>
-                <td>{{ mail.mail }}</td>
-                <td>{{ mail.sujet }}</td>
-                <td>{{ mail.message }}</td>
-                <td>
-                    <a href="{{ path('app_admin_mail_show', {'id': mail.id}) }}">show</a>
-                    <a href="{{ path('app_admin_mail_edit', {'id': mail.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="7">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+	<div class=
+    "messagerie"
+    >
 
-    <a href="{{ path('app_admin_mail_new') }}">Create new</a>
+		{% for mail in mails %}
+
+            <a href="{{path("app_admin_mail_show",{id : mail.id })}}">
+                <div class="messagerie__container {{mail.vu ? ' messagerie__container--vu ' : ' messagerie__container--nonVu '}}">
+                
+                    <div class="messagerie__date">
+                        <p class="texte texte--20">{{mail.sendAt|date('d / M / Y')}}</p>
+                    </div>
+
+                    <div class="messagerie__expediteur">
+                        <p class="texte texte--20">{{mail.nom|upper}}</p>
+                        <p class="texte texte--20">{{mail.prenom|capitalize}}</p>
+                    </div>
+
+                    <div class="messagerie__sujet">
+                        <p class="texte texte--20">{{mail.sujet}}</p>
+                    </div>
+    {# 
+                    <div class="messagerie__sujet">
+                        <p>{{mail.sujet}}</p>
+                    </div> #}
+
+                </div>
+            </a>
+
+		{% endfor %}
+
+	</div>
+
+
 {% endblock %}
+

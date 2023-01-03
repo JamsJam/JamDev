@@ -1,42 +1,33 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Mail{% endblock %}
+{% block title %}{{parent()}} Message n° {{mail.id}}{% endblock %}
 
 {% block body %}
-    <h1>Mail</h1>
+	<h1 class="titre titre--64">Mail n°{{mail.id}}</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ mail.id }}</td>
-            </tr>
-            <tr>
-                <th>Nom</th>
-                <td>{{ mail.nom }}</td>
-            </tr>
-            <tr>
-                <th>Prenom</th>
-                <td>{{ mail.prenom }}</td>
-            </tr>
-            <tr>
-                <th>Mail</th>
-                <td>{{ mail.mail }}</td>
-            </tr>
-            <tr>
-                <th>Sujet</th>
-                <td>{{ mail.sujet }}</td>
-            </tr>
-            <tr>
-                <th>Message</th>
-                <td>{{ mail.message }}</td>
-            </tr>
-        </tbody>
-    </table>
+	<div class="mailShow">
+		<div class="mailShow__expeditaire">
+			<h2 class="titre titre--32">Expeditaire : </h2>
+			<div class="mailShow__expeditaire__info">
+				<p class="texte texte--20">{{mail.nom|upper}} {{mail.prenom|capitalize}}</p>
+				<p class="texte texte--20">{{mail.mail}}</p>
+				<a href="mailto:{{mail.mail}}" class="bouton bouton--secondary">Contacter</a>
+				
+			</div>
+		</div>
+        <div class="mailShow__message">
+        <h2 class="titre titre--32">Message : </h2>
+            <p class="texte texte--16">
+                {{mail.message}}
+            </p>
+        </div>
+	</div>
+	<div class="mailShow__boutons">
+		<a href="{{ path('app_admin_mail_index') }}" class="bouton bouton--secondary">Retour</a>
 
-    <a href="{{ path('app_admin_mail_index') }}">back to list</a>
+		{# <a href="{{ path('app_admin_mail_edit', {'id': mail.id}) }}">edit</a> #}
 
-    <a href="{{ path('app_admin_mail_edit', {'id': mail.id}) }}">edit</a>
-
-    {{ include('admin/mail/_delete_form.html.twig') }}
+		{{ include('admin/mail/_delete_form.html.twig') }}
+	</div>
 {% endblock %}
+
