@@ -3,9 +3,105 @@
 {% block title %}Ajouter un nouveau projet{% endblock %}
 
 {% block body %}
-    <h1>Ajouter un nouveau projet</h1>
+    <h1 class="titre titre--64">Ajouter un nouveau projet</h1>
 
-    {{ include('admin/projets/_form.html.twig') }}
+        
 
-    <a href="{{ path('app_admin_projets_index') }}">back to list</a>
+    {# {{ include('admin/projets/_form.html.twig') }} #}
+    {{ form_start(form, {"attr" : {'class' : 'formProjet'}}) }}
+    
+    <div class="formProjet__part1">
+
+        {#! Form titre  #}
+
+            {% if form.titre.vars.valid == true and form.titre.vars.value|length > 0 %}
+                {{ form_row(form.titre,{ 'attr': {'class': 'input__text input--success formProjet__part1--titre'} } )}}
+                
+            {% else %}
+                
+                {% if form_errors(form.titre) %}
+
+                    {{ form_row(form.titre,{ 'attr': {'class': 'input__text input--danger formProjet__part1--titre'} } )}}
+                
+                {% else %}
+                
+                    {% if form.titre.vars.value|length == 0 %}
+                
+                        {{ form_row(form.titre,{ 'attr': {'class': 'input__text input--empty formProjet__part1--titre'} } )}}
+
+                    {% endif %}
+                {% endif %}
+            {% endif %}
+
+        {#! Form lien  #}            
+            {% if form.lien.vars.valid == true and form.lien.vars.value|length > 0 %}
+                {{ form_row(form.lien,{ 'attr': {'class': 'input__text input--success formProjet__part1--lien'} } )}}
+                
+            {% else %}
+                
+                {% if form_errors(form.lien) %}
+
+                    {{ form_row(form.lien,{ 'attr': {'class': 'input__text input--danger formProjet__part1--lien'} } )}}
+                
+                {% else %}
+                
+                    {% if form.lien.vars.value|length == 0 %}
+                
+                        {{ form_row(form.lien,{ 'attr': {'class': 'input__text input--empty formProjet__part1--lien'} } )}}
+
+                    {% endif %}
+                {% endif %}
+            {% endif %}
+
+        {#! form description #}
+            {% if form.description.vars.valid == true and form.description.vars.value|length > 0 %}
+                {{ form_row(form.description,{ 'attr': {'class': 'input__textarea input--success formProjet__part1--description'} } )}}
+                
+            {% else %}
+                
+                {% if form_errors(form.description) %}
+
+                    {{ form_row(form.description,{ 'attr': {'class': 'input__textarea input--danger formProjet__part1--description'} } )}}
+                
+                {% else %}
+                
+                    {% if form.description.vars.value|length == 0 %}
+                
+                        {{ form_row(form.description,{ 'attr': {'class': 'input__textarea input--empty formProjet__part1--description'} } )}}
+
+                    {% endif %}
+                {% endif %}
+            {% endif %}
+
+
+    </div>
+    
+
+
+    
+    <div class="formProjet__part2">
+        {{ form_widget(form.technologies) }}
+    </div>
+    
+    <div class="formProjet__part3">
+        {{ form_row(form.categorie) }}
+    </div>
+    
+    <div class="formProjet__part4">
+        {{ form_row(form.image1)}}
+        {{ form_row(form.image2)}}
+        {{ form_row(form.image3) }}
+    </div>
+    
+            {# <img src="{{ asset( 'build/images/autres/' ~ img[0] ) }}" alt="">
+            <img src="{{ asset('build/images/autres/' ~ img[1] ) }}" alt="">
+            <img src="{{ asset('build/images/autres/' ~ img[2]  ) }}" alt=""> #}
+
+    
+    <div class="formProjet__part5">
+        <button class="btn">{{ button_label|default('Save') }}</button>
+        <a href="{{ path('app_admin_projets_index') }}">back to list</a>
+    </div>
+{{ form_end(form) }}
+
 {% endblock %}

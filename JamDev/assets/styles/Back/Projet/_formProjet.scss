@@ -1,0 +1,13 @@
+@use "../../abstract/" as *;
+
+.formProjet {
+    @extend %flex-column-around-center;
+    width: max(80vw,300px);
+    margin-inline: auto;
+    min-height: 350px;
+
+    
+    width: max(calc(80vw - 2rem),300px)
+
+    
+}

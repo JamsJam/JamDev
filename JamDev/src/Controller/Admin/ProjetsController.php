@@ -27,9 +27,10 @@ class ProjetsController extends AbstractController
         $projet = new Projets();
         $form = $this->createForm(ProjetsType::class, $projet);
         $form->handleRequest($request);
+        $dossier = [1 => "siteComplet", 2 => "interface" ,3 =>"POC", 4 => "autres" ];
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $dossier = [1 => "siteComplet", 2 => "interface" ,3 =>"POC", 4 => "autres" ];
+            $categorieId = $form->get("categorie")->getData()->getId();
             $nomImages = [];
 
             //*     =====================================
@@ -48,7 +49,7 @@ class ProjetsController extends AbstractController
                 //? 2) determiner un dossier pour chaque categorie
                 //? 3) copier les images dans le dossier
                 $file->move(
-                    $this->getParameter($dossier[$form->get("categorie")->getData()->getId()]),
+                    $this->getParameter($dossier[$categorieId]),
                     $fileNewName
                 );
                 //? 4) recuperer les noms des images,  
@@ -57,7 +58,7 @@ class ProjetsController extends AbstractController
             }
             //? 5)  setImages 
             $projet->setImages(implode("--", $nomImages));
-            dd($projet);
+            // dd($projet);
 
             
             //*     =================================
@@ -95,8 +96,54 @@ class ProjetsController extends AbstractController
     {
         $form = $this->createForm(ProjetsType::class, $projet);
         $form->handleRequest($request);
+        // dd($projet);
+        
+        $projet->getImages();
+        // explode("--",$projet->getImages());
+        $oldImgNames = explode("--",$projet->getImages());
+        $ImgNames = explode("--",$projet->getImages());
+        $dossier = [1 => "siteComplet", 2 => "interface" ,3 =>"POC", 4 => "autres" ];
+        $oldCategorieId = $projet->getCategorie()->getId();
+        $image1 = $this->getParameter($dossier[$oldCategorieId])."\\".$ImgNames[0]; 
+        $image2 = $this->getParameter($dossier[$oldCategorieId])."\\".$ImgNames[1]; 
+        $image3 = $this->getParameter($dossier[$oldCategorieId])."\\".$ImgNames[2]; 
+        // dd($oldImgNames, $image1, $image2, $image3  );
+        
+        $currentimages = [1=>$image1, 2=>$image2, 3=>$image3] ;
+        
+
+
+
+
 
         if ($form->isSubmitted() && $form->isValid()) {
+            
+            $categorieId = $projet->getCategorie()->getId();
+
+            for ($i=0; $i < 3; $i++) { 
+                if ($form->get('image'.$i+1)->getData()) {
+
+                    
+                    unlink($currentimages[$i+1]);
+
+                    $file = $form->get('image'.$i+1)->getData();
+                
+                    //? 1) renommer les images
+                    $fileNewName = date("YmdHis").'-'.Uniqid().'-'.rand(100,999).'-'.$file->getClientOriginalName();
+                    
+                    //? 2) determiner un dossier pour chaque categorie
+                    //? 3) copier les images dans le dossier
+                    $file->move(
+                        $this->getParameter($dossier[$categorieId]),
+                        $fileNewName
+                    );
+                    $ImgNames[$i+1] = $fileNewName;
+
+                    
+                }
+            }
+            
+            // dd("--",implode($oldImgNames),implode("--", $ImgNames));
             $projetsRepository->save($projet, true);
 
             return $this->redirectToRoute('app_admin_projets_index', [], Response::HTTP_SEE_OTHER);
@@ -105,6 +152,9 @@ class ProjetsController extends AbstractController
         return $this->render('admin/projets/edit.html.twig', [
             'projet' => $projet,
             'form' => $form,
+            'img' => $oldImgNames
+
+
         ]);
     }
 

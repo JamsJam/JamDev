@@ -22,18 +22,45 @@ class ProjetsType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('titre',TextType::class,[])
-            ->add('lien',UrlType::class,[])
+            ->add('titre',TextType::class,[
+                "required" => false,
+                "label" => false,
+                "attr" => [
+                    "placeholder" => "Entrer le titre du projet"
+                ]
+            ])
+            ->add('lien',UrlType::class,[
+                "required" => false,
+                "label" => false,
+                "attr" => [
+                    "placeholder" => "Entrer le lien du projet"
+                ]
+            ])
+            ->add('description',TextareaType::class,[
+                "required" => false,
+                "label" => false,
+                "attr" => [
+                    "placeholder" => "Décrire le projet",
+                    "class" => "input__textarea input-empty "
+                ]
+            ])
+            
+            //! Image a join dans le controlleur
+            
             ->add('image1',FileType::class,[
-                "mapped" => false
+                "mapped" => false,
+                "required" => false
             ])
             ->add('image2',FileType::class,[
-                "mapped" => false
+                "mapped" => false,
+                "required" => false
             ])
             ->add('image3',FileType::class,[
-                "mapped" => false
+                "mapped" => false,
+                "required" => false
             ])
-            ->add('description',TextareaType::class,[])
+            //! ==============================
+
             ->add('technologies',EntityType::class,[
                 "class"=> Technologie::class,
                 "choice_label" => "technologie",

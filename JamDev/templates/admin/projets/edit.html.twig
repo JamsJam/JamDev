@@ -5,7 +5,27 @@
 {% block body %}
     <h1>Edit Projets</h1>
 
-    {{ include('admin/projets/_form.html.twig', {'button_label': 'Update'}) }}
+    {# {{ include('admin/projets/_form.html.twig', {'button_label': 'Update'}) }} #}
+    {{ form_start(form) }}
+    
+    
+    {{ form_row(form.titre) }}
+    {{ form_row(form.lien) }}
+    {{ form_row(form.description) }}
+    {{ form_row(form.image1)}}
+        <img src="{{ asset( 'build/images/autres/' ~ img[0] ) }}" alt="">
+    {{ form_row(form.image2)}}
+        <img src="{{ asset('build/images/autres/' ~ img[1] ) }}" alt="">
+    {{ form_row(form.image3) }}
+        <img src="{{ asset('build/images/autres/' ~ img[2]  ) }}" alt="">
+    {{ form_row(form.technologies) }}
+    {{ form_row(form.categorie) }}
+    
+
+    
+
+    <button class="btn">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}
 
     <a href="{{ path('app_admin_projets_index') }}">back to list</a>
 
