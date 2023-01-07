@@ -1,0 +1,63 @@
+@use '../../abstract/' as *;
+
+.chercheProjets{
+    @extend %flex-center;
+    flex-direction: row-reverse;
+    gap: 1rem;
+    margin-block: 5rem;
+    flex-wrap: wrap;
+    padding-inline: 2rem;
+
+    input[type='text']{
+        width: max(60vw, 280px);
+    }
+}
+
+
+.projetIndex {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2rem;
+    justify-items: center;
+    min-height: 70vh;
+    padding-inline: 1rem;
+
+    &__card {
+        @extend %flex-column-around-center;
+        width: 270px;
+        height: 329px;
+        border-radius: 10px;
+        box-shadow: 1px 1px 33px -1px hsl(0deg 0% 0% / 44%);
+        padding-block: 1rem;
+        position: relative;
+        gap: 0.5rem;
+
+
+        h2{
+            text-align: center;
+        }
+
+        svg{
+            position: absolute;
+            right: 10px;
+            top: 14px;
+            fill: #00000070;
+            transition: fill ease-in-out 0.3s;
+            
+            &:hover{
+                
+                fill: #000000;
+            }
+        
+        }
+
+    }
+    &__img {
+        height: 7.5rem;
+    }
+
+    &__new{
+        margin: 3rem auto;
+        width: min-content;
+    }
+}

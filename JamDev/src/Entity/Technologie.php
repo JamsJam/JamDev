@@ -18,13 +18,21 @@ class Technologie
     #[ORM\Column(length: 255)]
     private ?string $technologie = null;
 
-    #[ORM\ManyToMany(targetEntity: Projets::class, inversedBy: 'technologies')]
-    private Collection $projet;
+    #[ORM\ManyToMany(targetEntity: Projets::class, mappedBy: 'Technologie')]
+    private Collection $projets;
 
     public function __construct()
     {
-        $this->projet = new ArrayCollection();
+        $this->projets = new ArrayCollection();
     }
+
+    // #[ORM\ManyToMany(targetEntity: Projets::class, inversedBy: 'technologies')]
+    // private Collection $projet;
+
+    // public function __construct()
+    // {
+    //     $this->projet = new ArrayCollection();
+    // }
 
     public function getId(): ?int
     {
@@ -43,18 +51,43 @@ class Technologie
         return $this;
     }
 
+    // /**
+    //  * @return Collection<int, Projets>
+    //  */
+    // public function getProjet(): Collection
+    // {
+    //     return $this->projet;
+    // }
+
+    // public function addProjet(Projets $projet): self
+    // {
+    //     if (!$this->projet->contains($projet)) {
+    //         $this->projet->add($projet);
+    //     }
+
+    //     return $this;
+    // }
+
+    // public function removeProjet(Projets $projet): self
+    // {
+    //     $this->projet->removeElement($projet);
+
+    //     return $this;
+    // }
+
     /**
      * @return Collection<int, Projets>
      */
-    public function getProjet(): Collection
+    public function getProjets(): Collection
     {
-        return $this->projet;
+        return $this->projets;
     }
 
     public function addProjet(Projets $projet): self
     {
-        if (!$this->projet->contains($projet)) {
-            $this->projet->add($projet);
+        if (!$this->projets->contains($projet)) {
+            $this->projets->add($projet);
+            $projet->addTechnologie($this);
         }
 
         return $this;
@@ -62,7 +95,9 @@ class Technologie
 
     public function removeProjet(Projets $projet): self
     {
-        $this->projet->removeElement($projet);
+        if ($this->projets->removeElement($projet)) {
+            $projet->removeTechnologie($this);
+        }
 
         return $this;
     }

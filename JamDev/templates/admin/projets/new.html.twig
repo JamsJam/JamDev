@@ -75,33 +75,95 @@
 
 
     </div>
+    {#! form techno #}
+    {{ form_widget(form.technologie) }}
     
-
-
-    
-    <div class="formProjet__part2">
-        {{ form_widget(form.technologies) }}
-    </div>
-    
+    {#! form categories  #}
     <div class="formProjet__part3">
-        {{ form_row(form.categorie) }}
+        {{ form_widget(form.categorie) }}
     </div>
-    
+
+    {#! form images  #}
     <div class="formProjet__part4">
         {{ form_row(form.image1)}}
         {{ form_row(form.image2)}}
         {{ form_row(form.image3) }}
     </div>
-    
-            {# <img src="{{ asset( 'build/images/autres/' ~ img[0] ) }}" alt="">
-            <img src="{{ asset('build/images/autres/' ~ img[1] ) }}" alt="">
-            <img src="{{ asset('build/images/autres/' ~ img[2]  ) }}" alt=""> #}
 
+    {#! aperçu images  #}
+    <div id="zone">
+        <div id="zone__img1">
+            
+        </div>
+        <div class="zone__secondaire">
+            <div id="zone__img2">
+                
+            </div>
+            <div id="zone__img3">
+                
+            </div>
+        </div>
+    </div>
     
     <div class="formProjet__part5">
-        <button class="btn">{{ button_label|default('Save') }}</button>
-        <a href="{{ path('app_admin_projets_index') }}">back to list</a>
+        <button class="bouton bouton--primary">{{ button_label|default('Ajouter') }}</button>
+        <a  class="bouton bouton--secondary" href="{{ path('app_admin_projets_index') }}">Retour</a>
     </div>
+
+
 {{ form_end(form) }}
 
+{% endblock %}
+{% block script %}
+
+<script>
+
+    let inputImage1 = document.querySelector("#projets_image1");
+    let inputImage2 = document.querySelector("#projets_image2");
+    let inputImage3 = document.querySelector("#projets_image3");
+
+    inputImage1.addEventListener("change",(event)=>{
+        let zone = document.querySelector("#zone__img1")
+
+        zone.innerHTML = null
+
+        let image = document.createElement("img");
+
+        image.setAttribute("src", URL.createObjectURL(event.target.files[0]) );
+        image.setAttribute("class","img250");
+        console.log(image);
+        zone.append(image);
+    })
+
+    inputImage2.addEventListener("change",(event)=>{
+        let zone = document.querySelector("#zone__img2")
+
+        zone.innerHTML = null
+
+        let image = document.createElement("img");
+
+        image.setAttribute("src", URL.createObjectURL(event.target.files[0]) );
+        image.setAttribute("class","img250");
+        console.log(image);
+        zone.append(image);
+    })
+    inputImage3.addEventListener("change",(event)=>{
+        let zone = document.querySelector("#zone__img3")
+
+        zone.innerHTML = null
+
+        let image = document.createElement("img");
+
+        image.setAttribute("src", URL.createObjectURL(event.target.files[0]) );
+        image.setAttribute("class","img250");
+        console.log(image);
+        zone.append(image);
+    })
+
+        
+
+        
+    
+
+</script>
 {% endblock %}

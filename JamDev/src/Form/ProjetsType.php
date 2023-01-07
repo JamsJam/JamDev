@@ -47,29 +47,45 @@ class ProjetsType extends AbstractType
             
             //! Image a join dans le controlleur
             
-            ->add('image1',FileType::class,[
-                "mapped" => false,
-                "required" => false
-            ])
-            ->add('image2',FileType::class,[
-                "mapped" => false,
-                "required" => false
-            ])
-            ->add('image3',FileType::class,[
-                "mapped" => false,
-                "required" => false
-            ])
+                ->add('image1',FileType::class,[
+                    "mapped" => false,
+                    "required" => false,
+                    "attr" => [
+                        "class" => "input__file",
+                    ]
+                ])
+                ->add('image2',FileType::class,[
+                    "mapped" => false,
+                    "required" => false,
+                    "attr" => [
+                        "class" => "input__file",
+                    ]
+                ])
+                ->add('image3',FileType::class,[
+                    "mapped" => false,
+                    "required" => false,
+                    "attr" => [
+                        "class" => "input__file",
+                    ]
+                ])
             //! ==============================
 
-            ->add('technologies',EntityType::class,[
+            ->add('technologie',EntityType::class,[
                 "class"=> Technologie::class,
+                // 'entry_type' => Technologie::class,
                 "choice_label" => "technologie",
+                "attr"=> [
+                    "class" => "input__checkbox"
+                ],
                 "multiple" => true,
                 "expanded" => true
             ])
             ->add('categorie',EntityType::class,[
                 "class"=> Categorie::class,
                 "choice_label" => "categorie",
+                "row_attr" => [
+                    "class" => "formProjet__part3"
+                ],
                 "multiple" => false,
                 "expanded" => false
             ])

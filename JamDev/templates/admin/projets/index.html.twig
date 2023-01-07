@@ -3,39 +3,38 @@
 {% block title %}Projets index{% endblock %}
 
 {% block body %}
-    <h1>Projets index</h1>
+    <h1 class="titre titre--64" >Touts les projets</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Titre</th>
-                <th>Lien</th>
-                <th>Images</th>
-                <th>Description</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
+
+
+
+        {{form_start(search)}}
+            {{form_widget(search,{'attr' : {'class' : 'chercheProjets'}})}}
+        {{form_end(search)}}
+
+
+
+    <div class="projetIndex">
         {% for projet in projets %}
-            <tr>
-                <td>{{ projet.id }}</td>
-                <td>{{ projet.titre }}</td>
-                <td>{{ projet.lien }}</td>
-                <td>{{ projet.images ? projet.images|join(', ') : '' }}</td>
-                <td>{{ projet.description }}</td>
-                <td>
-                    <a href="{{ path('app_admin_projets_show', {'id': projet.id}) }}">show</a>
-                    <a href="{{ path('app_admin_projets_edit', {'id': projet.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="6">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+            <div class="projetIndex__card">
+                <h2 class="titre titre--24"> {{projet.titre}} </h2>
+                <img src="{{asset("build/images/" ~ dossier[projet.categorie.id] ~ '/' ~ projet.images|split('--')[0])}}" alt="" class="projetIndex__img">
+                <a href="{{ path('app_admin_projets_show', { 'id' : projet.id}) }}" class="bouton bouton--secondary">Voir plus</a>
+                <svg  height="10px" viewBox="0 0 34 10">
+                    <circle cx="5" cy="5" r="5"/>
+                    <circle cx="16.63" cy="5" r="5"/>
+                    <circle cx="28.259" cy="5" r="5"/>
+                </svg>
+            </div>
 
-    <a href="{{ path('app_admin_projets_new') }}">Create new</a>
+            
+        {% else %}
+            
+                <p class="texte texte__24 projetIndex__noResult">Aucun projet trouvé</p>
+            
+        {% endfor %}
+        
+
+    </div>
+    <a class="bouton bouton--primary projetIndex__new" href="{{ path('app_admin_projets_new') }}">Ajouter</a>
 {% endblock %}

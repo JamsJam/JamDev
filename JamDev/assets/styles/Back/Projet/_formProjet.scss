@@ -6,8 +6,76 @@
     margin-inline: auto;
     min-height: 350px;
 
-    
-    width: max(calc(80vw - 2rem),300px)
+    &__part1{
+        
+        input,textarea{
 
+            width: max(calc(80vw - 2rem),300px);
+            margin-block-end: 2rem;
+        }
+    }
     
+    // &__part2{
+    .input__checkbox{
+            
+            margin-block-end: 2rem;
+            
+            input{
+
+                appearance: none;
+                height: 15px;
+                width: 15px;
+                padding: 1px;
+                outline: $primary-15 3px solid;
+                transition: background 0.4s ease-in-out,
+                            scale 0.2s ease-in-out;
+                margin-inline :1rem 0.25rem;
+                margin-block-start: 0.5rem;
+                
+                &:hover{
+                    cursor: pointer;
+                    scale: 110%;
+                }
+
+                &:checked{
+                    background-color: $primary-35;
+
+
+                }
+            }
+        // }
+    }
+
+    &__part3{
+        margin-block: 1rem;
+    }
+
+    &__part4{
+        margin-block: 1rem 2rem;
+        @extend %flex-column-center;
+        gap: 1rem;
+    }
+
+    &__part5{
+        @extend %flex-row-center;
+        margin-block: 4rem;
+        gap: 2rem;
+
+
+    }
+
+    #zone{
+        margin-inline: 2rem;
+        @extend %flex-column-center;
+
+        .zone__secondaire{
+            @extend %flex-center;
+            gap: 1rem;
+            flex-wrap:wrap;
+        }
+
+        .img250{
+            height: 140px;
+        }
+    }
 }

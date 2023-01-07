@@ -28,17 +28,25 @@ class Projets
     #[ORM\Column(length: 255)]
     private ?string $description = null;
 
-    #[ORM\ManyToMany(targetEntity: Technologie::class, mappedBy: 'projet')]
-    private Collection $technologies;
+    // #[ORM\ManyToMany(targetEntity: Technologie::class, mappedBy: 'projet')]
+    // private Collection $technologies;
 
     #[ORM\ManyToOne(inversedBy: 'projets')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Categorie $categorie = null;
 
+    #[ORM\ManyToMany(targetEntity: Technologie::class, inversedBy: 'projets')]
+    private Collection $Technologie;
+
     public function __construct()
     {
-        $this->technologies = new ArrayCollection();
+        $this->Technologie = new ArrayCollection();
     }
+
+    // public function __construct()
+    // {
+    //     $this->technologies = new ArrayCollection();
+    // }
 
     public function getId(): ?int
     {
@@ -93,32 +101,32 @@ class Projets
         return $this;
     }
 
-    /**
-     * @return Collection<int, Technologie>
-     */
-    public function getTechnologies(): Collection
-    {
-        return $this->technologies;
-    }
+    // /**
+    //  * @return Collection<int, Technologie>
+    //  */
+    // public function getTechnologies(): Collection
+    // {
+    //     return $this->technologies;
+    // }
 
-    public function addTechnology(Technologie $technology): self
-    {
-        if (!$this->technologies->contains($technology)) {
-            $this->technologies->add($technology);
-            $technology->addProjet($this);
-        }
+    // public function addTechnology(Technologie $technology): self
+    // {
+    //     if (!$this->technologies->contains($technology)) {
+    //         $this->technologies->add($technology);
+    //         $technology->addProjet($this);
+    //     }
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
-    public function removeTechnology(Technologie $technology): self
-    {
-        if ($this->technologies->removeElement($technology)) {
-            $technology->removeProjet($this);
-        }
+    // public function removeTechnology(Technologie $technology): self
+    // {
+    //     if ($this->technologies->removeElement($technology)) {
+    //         $technology->removeProjet($this);
+    //     }
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
     public function getCategorie(): ?Categorie
     {
@@ -128,6 +136,30 @@ class Projets
     public function setCategorie(?Categorie $categorie): self
     {
         $this->categorie = $categorie;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Technologie>
+     */
+    public function getTechnologie(): Collection
+    {
+        return $this->Technologie;
+    }
+
+    public function addTechnologie(Technologie $technologie): self
+    {
+        if (!$this->Technologie->contains($technologie)) {
+            $this->Technologie->add($technologie);
+        }
+
+        return $this;
+    }
+
+    public function removeTechnologie(Technologie $technologie): self
+    {
+        $this->Technologie->removeElement($technologie);
 
         return $this;
     }

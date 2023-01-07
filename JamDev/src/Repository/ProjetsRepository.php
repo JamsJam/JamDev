@@ -39,6 +39,47 @@ class ProjetsRepository extends ServiceEntityRepository
         }
     }
 
+   /**
+    * @return Projets[] Returns an array of Projets objects
+    * 
+    */
+   public function chercheTitre(mixed $value): array
+   {
+        $conn = $this->getEntityManager()->getConnection();
+
+        $sql = '
+            SELECT p.id  FROM projets  as p
+            WHERE  p.titre       LIKE :value
+            ORDER BY p.id DESC
+            ';
+        
+        $stmt = $conn->prepare($sql);
+        $result = $stmt->executeQuery(['value' => "%".$value."%"]);
+        return $result->fetchAllAssociative();
+   }
+
+   /**
+    * @return Projets[] Returns an array of Projets objects
+    * 
+    */
+   public function chercheTechno(mixed $value): array
+   {
+        $conn = $this->getEntityManager()->getConnection();
+
+        $sql = '
+            SELECT p.id  FROM projets  as p
+            JOIN projets_technologie AS a  ON a.projets_id = p.id
+            JOIN technologie as t ON t.id = a.technologie_id
+            WHERE t.technologie LIKE :value
+            ORDER BY p.id DESC
+            ';
+        
+        $stmt = $conn->prepare($sql);
+        $result = $stmt->executeQuery(['value' => "%".$value."%"]);
+        return $result->fetchAllAssociative();
+   }
+
+
 //    /**
 //     * @return Projets[] Returns an array of Projets objects
 //     */
