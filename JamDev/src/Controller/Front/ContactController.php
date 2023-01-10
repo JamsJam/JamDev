@@ -41,8 +41,9 @@ class ContactController extends AbstractController
             $url.= $_SERVER['REQUEST_URI'];    
 
             $mail = $form->getData();
+            $telephone = $form->get('telephone')->getData();
                 //? =================================================
-                //*         *********** EMAIL ************
+                //*       *********** EMAIL POUR MOI ************
                 //? =================================================
                     $content = $mail->getMessage();
                     $email = new MailNotification(
@@ -56,17 +57,43 @@ class ContactController extends AbstractController
                                 "front/contact/contact_email.html.twig",
                     //todo    5) parametres
                                 [
-                                    'content' => $content,
-                                    'mail'=> $mail,
-                                    'url' => $url
+                                    'content'   => $content,
+                                    'mail'      => $mail,
+                                    'url'       => $url,
+                                    'telephone' => $telephone
                                 ]
                         );
                     $bus->dispatch($email);
-            //? =================================================
-            //*         *********** FIN EMAIL ************
-            //? =================================================
-
-            $mailRepository->save($mail, true);
+                //? =================================================
+                //*       *********** FIN EMAIL ************
+                //? =================================================
+                
+                $mailRepository->save($mail, true);
+                //? =================================================
+                //*       *********** EMAIL POUR CLIENT ************
+                //? =================================================
+                    // $content = $mail->getMessage();
+                    $email = new MailNotification(
+                    //todo    1) Sujet
+                                "Confirmation d'envoi",
+                    //todo    2) destinataire
+                                $mail->getMail(),
+                    //todo    3) expeditaire
+                                "contact@jamdev.fr",
+                    //todo    4) template
+                                "front/contact/confirmation_email.html.twig",
+                    //todo    5) parametres
+                                [
+                                    // 'content' => $content,
+                                    'mail'=> $mail,
+                                    // 'url' => $url,
+                                    'telephone' => $telephone
+                                ]
+                        );
+                    $bus->dispatch($email);
+                //? =================================================
+                //*       *********** FIN EMAIL ************
+                //? =================================================
 
             //?appFlash 
             $this->addFlash('mailConfirm', 'Votre email a bien été envoyé. Vous serez contacter d\'ici 48 heures ');

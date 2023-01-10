@@ -27,7 +27,7 @@
             width: max(60vw,250px);
             margin-block: 0.5rem;
         }
-        input[type=text]{
+        #username{
             margin-block-end: 2rem;
         }
 
@@ -50,6 +50,10 @@
         button,a{
             margin-block: 0.5rem ;
         }
+    }
+
+    &__flash{
+        margin-inline: auto;
     }
 }
 

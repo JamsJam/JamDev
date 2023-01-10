@@ -44,6 +44,9 @@ class Mail
     )]
     private ?string $sujet = null;
 
+    #[Assert\NotBlank(
+        message: 'Veuillez saisir votre message'
+    )]
     #[ORM\Column(length: 255)]
     private ?string $message = null;
 

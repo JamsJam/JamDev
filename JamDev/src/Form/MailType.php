@@ -5,11 +5,15 @@ namespace App\Form;
 use App\Entity\Mail;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Validator\Constraints\Regex;
+
+// use Symfony\Component\Validator\Constraints as Assert;
 
 class MailType extends AbstractType
 {
@@ -37,6 +41,21 @@ class MailType extends AbstractType
                     'class' => "input__text",
                     
                 ]
+            ])
+            ->add('telephone', TextType::class,[
+                'required'  => false,
+                "mapped"   => false,
+                "attr"      => [
+                    "placeholder" => "n° de telephone",
+                    'class' => "input__text",
+                    ],
+                'constraints' => [
+                    new Regex([
+                        'pattern'   => '^(?:(?:\+|00)(?:\d){0,3}[\s.-]{0,3}(?:\(0\)[\s.-]{0,3})?|0)[1-9](?:(?:[\s.-]?\d{2}){4}|\d{2}(?:[\s.-]?\d{3}){2})$^',
+                        'match'     => true,
+                        'message'   => 'Veuillez entrer un numero valide',
+                        ])
+                    ],
             ])
             ->add('sujet', TextType::class,[
                 'required' => false,

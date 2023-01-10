@@ -1,15 +1,22 @@
 {% extends 'base.html.twig' %}
 
-{# ... #}
 
 {% block body %}
     {% if error %}
         <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
     {% endif %}
 
-        <div id="connexion__intro" class="connexion__intro idle__titre idle__titre--hid">
-            <h1 class="titre titre--64">Connexion</h1>
-        </div>
+    <div id="connexion__intro" class="connexion__intro idle__titre idle__titre--hid">
+        <h1 class="titre titre--64">Connexion</h1>
+    </div>
+
+
+    {#!  Acces back-office sans connexion #}
+        {% for message in app.flashes('AccessDeny') %}
+            <div class="flash flash--danger connexion__flash">
+                {{ message }}
+            </div>
+        {% endfor %}
 
     <form  id="connexion__form" class="connexion__form idle__text idle__text--hid" action="{{ path('app_login') }}" method="post">
 
@@ -19,24 +26,18 @@
 
             <input class="input--empty input__text" placeholder="Email" type="text" id="username" name="_username" value="{{ last_username }}">
             <div>
-                <label for=""><input type="checkbox" name="" id=""> Voir le mot de passe</label>
+                <label for=""><input type="checkbox" name="" id="mdpVisible"> Voir le mot de passe</label>
                 <input class="input--empty input__text" placeholder="Mot de passe" type="password" id="password" name="_password">
                 <a href="" class="texte texte--14">Mot de passe oublié ?</a>
             </div>
 
         </div>
-{# 
-        <div class="connexion__resetMdp">
-            
-        </div> #}
 
-        {# If you want to control the URL the user is redirected to on success
-        <input type="hidden" name="_target_path" value="/account"> #}
         <div class="connexion__bouton">
             <button type="submit" class="bouton bouton--primary">Connexion</button>
             <a href="#" class="bouton bouton--secondary">Retour</a>
         </div>
-        {# If you want to control the URL the user is redirected to on success#}
+        
         <input type="hidden" name="_target_path" value="{{path('app_admin_dashboard')}}">
     
     </form>
@@ -51,5 +52,17 @@
         let arrayIntro = [introTitre, introTexte]
         window.addEventListener("DOMContentLoaded",introShowAnimate(arrayIntro));
 
+        let mdpVisible = document.querySelector('#mdpVisible');
+        let password = document.querySelector('#password');
+        
+        mdpVisible.addEventListener('change',()=>{
+            if(mdpVisible.checked){
+                password.setAttribute('type','text')
+                console.log("tgbjhndfglbhlfxgnbjklff")
+            }
+            else{
+                password.setAttribute('type','password')
+            }
+        })
     </script>
 {% endblock %}

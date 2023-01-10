@@ -38,132 +38,157 @@
 
             {{ form_start(form) }}
 
-                {% for item in form.children |slice(0,5) %}
-                    {% if (item.vars.errors|length > 0) %}
+                {#! error display  #}
+                    {% for item in form.children |slice(0,5) %}
+                        {% if (item.vars.errors|length > 0) %}
+                            
+                            <div class="flash flash--danger">
+                                {{ form_errors(item) }}
+                            </div>
                         
-                        <div class="flash flash--danger">
-                            {{ form_errors(item) }}
-                        </div>
-                    
-                    {% endif %}
-                {% endfor %}
+                        {% endif %}
+                    {% endfor %}
 
 
                 
                 <div>
-            {#! Form nom  #}
-                    {% if form.nom.vars.valid == true and form.nom.vars.value|length > 0 %}
-                        {{ form_widget(form.nom,{ 'attr': {'class': 'input__text input--success '} } )}}
-                        
-                    {% else %}
-                        
-                        {% if form_errors(form.nom) %}
+                    {#! Form nom  #}
+                            {% if form.nom.vars.valid == true and form.nom.vars.value|length > 0 %}
+                                {{ form_widget(form.nom,{ 'attr': {'class': 'input__text input--success '} } )}}
+                                
+                            {% else %}
+                                
+                                {% if form_errors(form.nom) %}
 
-                            {{ form_widget(form.nom,{ 'attr': {'class': 'input__text input--danger '} } )}}
-                        
-                        {% else %}
-                        
-                            {% if form.nom.vars.value|length == 0 %}
-                        
-                                {{ form_widget(form.nom,{ 'attr': {'class': 'input__text input--empty '} } )}}
+                                    {{ form_widget(form.nom,{ 'attr': {'class': 'input__text input--danger '} } )}}
+                                
+                                {% else %}
+                                
+                                    {% if form.nom.vars.value|length == 0 %}
+                                
+                                        {{ form_widget(form.nom,{ 'attr': {'class': 'input__text input--empty '} } )}}
 
+                                    {% endif %}
+
+                                    
+                                {% endif %}
                             {% endif %}
+                    {#! Form prenom  #}
+                            {% if form.prenom.vars.valid == true and form.prenom.vars.value|length > 0 %}
+                                {{ form_widget(form.prenom,{ 'attr': {'class': 'input__text input--success '} } )}}
+                                
+                            {% else %}
+                                
+                                {% if form_errors(form.prenom) %}
 
-                            
-                        {% endif %}
-                    {% endif %}
-            {#! Form prenom  #}
-                    {% if form.prenom.vars.valid == true and form.prenom.vars.value|length > 0 %}
-                        {{ form_widget(form.prenom,{ 'attr': {'class': 'input__text input--success '} } )}}
-                        
-                    {% else %}
-                        
-                        {% if form_errors(form.prenom) %}
+                                    {{ form_widget(form.prenom,{ 'attr': {'class': 'input__text input--danger '} } )}}
+                                
+                                {% else %}
+                                
+                                    {% if form.prenom.vars.value|length == 0 %}
+                                
+                                        {{ form_widget(form.prenom,{ 'attr': {'class': 'input__text input--empty '} } )}}
 
-                            {{ form_widget(form.prenom,{ 'attr': {'class': 'input__text input--danger '} } )}}
-                        
-                        {% else %}
-                        
-                            {% if form.prenom.vars.value|length == 0 %}
-                        
-                                {{ form_widget(form.prenom,{ 'attr': {'class': 'input__text input--empty '} } )}}
+                                    {% endif %}
 
+                                    
+                                {% endif %}
                             {% endif %}
-
-                            
-                        {% endif %}
-                    {% endif %}
                 </div>
-            {#! Form mail  #}
-                {% if form.mail.vars.valid == true and form.mail.vars.value|length > 0 %}
-                    {{ form_widget(form.mail,{ 'attr': {'class': 'input__text input--success '} } )}}
-                    
-                {% else %}
-                    
-                    {% if form_errors(form.mail) %}
 
-                        {{ form_widget(form.mail,{ 'attr': {'class': 'input__text input--danger '} } )}}
-                    
-                    {% else %}
-                    
-                        {% if form.mail.vars.value|length == 0 %}
-                    
-                            {{ form_widget(form.mail,{ 'attr': {'class': 'input__text input--empty '} } )}}
-
-                        {% endif %}
-
+                {#! Form mail  #}
+                    {% if form.mail.vars.valid == true and form.mail.vars.value|length > 0 %}
+                        {{ form_widget(form.mail,{ 'attr': {'class': 'input__text input--success '} } )}}
                         
-                    {% endif %}
-                {% endif %}
-                    
-            {#! Form sujet  #}
-                {% if form.sujet.vars.valid == true and form.sujet.vars.value|length > 0 %}
-                    {{ form_widget(form.sujet,{ 'attr': {'class': 'input__text input--success '} } )}}
-                    
-                {% else %}
-                    
-                    {% if form_errors(form.sujet) %}
-
-                        {{ form_widget(form.sujet,{ 'attr': {'class': 'input__text input--danger '} } )}}
-                    
                     {% else %}
-                    
-                        {% if form.sujet.vars.value|length == 0 %}
-                    
-                            {{ form_widget(form.sujet,{ 'attr': {'class': 'input__text input--empty '} } )}}
-
-                        {% endif %}
-
                         
-                    {% endif %}
-                {% endif %}
-                    
-            {#! Form message  #}
-                {% if form.message.vars.valid == true and form.message.vars.value|length > 0 %}
-                    {{ form_widget(form.message,{ 'attr': {'class': 'input__textarea input--success '} } )}}
-                    
-                {% else %}
-                    
-                    {% if form_errors(form.message) %}
+                        {% if form_errors(form.mail) %}
 
-                        {{ form_widget(form.message,{ 'attr': {'class': 'input__textarea input--danger '} } )}}
-                    
+                            {{ form_widget(form.mail,{ 'attr': {'class': 'input__text input--danger '} } )}}
+                        
+                        {% else %}
+                        
+                            {% if form.mail.vars.value|length == 0 %}
+                        
+                                {{ form_widget(form.mail,{ 'attr': {'class': 'input__text input--empty '} } )}}
+
+                            {% endif %}
+
+                            
+                        {% endif %}
+                    {% endif %}
+                        
+
+                {#! Form telephone  #}
+                    {% if form.telephone.vars.valid == true and form.telephone.vars.value|length > 0 %}
+                        {{ form_widget(form.telephone,{ 'attr': {'class': 'input__text input--success '} } )}}
+                        
                     {% else %}
-                    
-                        {% if form.message.vars.value|length == 0 %}
-                    
-                            {{ form_widget(form.message,{ 'attr': {'class': 'input__textarea input--empty '} } )}}
-
-                        {% endif %}
-
                         
-                    {% endif %}
-                {% endif %}
+                        {% if form_errors(form.telephone) %}
 
-                    <div class="form__bouton">
-                        {{ form_widget(form.envoyer) }}
-                        <a href="{{path("app_front_accueil")}}" class="bouton bouton--secondary">retour</a>
-                    </div>
+                            {{ form_widget(form.telephone,{ 'attr': {'class': 'input__text input--danger '} } )}}
+                        
+                        {% else %}
+                        
+                            {% if form.telephone.vars.value|length == 0 %}
+                        
+                                {{ form_widget(form.telephone,{ 'attr': {'class': 'input__text input--empty '} } )}}
+
+                            {% endif %}
+
+                            
+                        {% endif %}
+                    {% endif %}
+                        
+                {#! Form sujet  #}
+                    {% if form.sujet.vars.valid == true and form.sujet.vars.value|length > 0 %}
+                        {{ form_widget(form.sujet,{ 'attr': {'class': 'input__text input--success '} } )}}
+                        
+                    {% else %}
+                        
+                        {% if form_errors(form.sujet) %}
+
+                            {{ form_widget(form.sujet,{ 'attr': {'class': 'input__text input--danger '} } )}}
+                        
+                        {% else %}
+                        
+                            {% if form.sujet.vars.value|length == 0 %}
+                        
+                                {{ form_widget(form.sujet,{ 'attr': {'class': 'input__text input--empty '} } )}}
+
+                            {% endif %}
+
+                            
+                        {% endif %}
+                    {% endif %}
+                        
+                {#! Form message  #}
+                    {% if form.message.vars.valid == true and form.message.vars.value|length > 0 %}
+                        {{ form_widget(form.message,{ 'attr': {'class': 'input__textarea input--success '} } )}}
+                        
+                    {% else %}
+                        
+                        {% if form_errors(form.message) %}
+
+                            {{ form_widget(form.message,{ 'attr': {'class': 'input__textarea input--danger '} } )}}
+                        
+                        {% else %}
+                        
+                            {% if form.message.vars.value|length == 0 %}
+                        
+                                {{ form_widget(form.message,{ 'attr': {'class': 'input__textarea input--empty '} } )}}
+
+                            {% endif %}
+
+                            
+                        {% endif %}
+                    {% endif %}
+
+                        <div class="form__bouton">
+                            {{ form_widget(form.envoyer) }}
+                            <a href="{{path("app_front_accueil")}}" class="bouton bouton--secondary">retour</a>
+                        </div>
                     
                 
             {{ form_end(form) }}
