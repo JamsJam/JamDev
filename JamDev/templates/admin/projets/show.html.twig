@@ -1,38 +1,70 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Projets{% endblock %}
+{% block title %}{{parent() }}Mes projets | {{projet.titre}} {% endblock %}
 
 {% block body %}
-    <h1>Projets</h1>
+    <h1 class="titre titre--64"> {{projet.titre}} </h1>
+    <section class="projetsShow__image">
+        
+            <div class="projetsShow__image--aperçu">
+                <img class="image--cover" src="{{asset("build/images/" ~ dossier[projet.categorie.id] ~ "/" ~ imgs[0] )}}"  alt="">
+            </div>
+            <div class="projetsShow__image--aperçu">
+                <img class="image--aperçu" src="{{asset("build/images/" ~ dossier[projet.categorie.id] ~ "/" ~ imgs[1] )}}"  alt=""> 
+                <img class="image--aperçu" src="{{asset("build/images/" ~ dossier[projet.categorie.id] ~ "/" ~ imgs[0] )}}"  alt="">
+                <img class="image--aperçu" src="{{asset("build/images/" ~ dossier[projet.categorie.id] ~ "/" ~ imgs[2] )}}"  alt="">
+            </div> 
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ projet.id }}</td>
-            </tr>
-            <tr>
-                <th>Titre</th>
-                <td>{{ projet.titre }}</td>
-            </tr>
-            <tr>
-                <th>Lien</th>
-                <td>{{ projet.lien }}</td>
-            </tr>
-            <tr>
-                <th>Images</th>
-                <td>{{ projet.images ? projet.images|join(', ') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ projet.description }}</td>
-            </tr>
-        </tbody>
-    </table>
+    </section>
 
-    <a href="{{ path('app_admin_projets_index') }}">back to list</a>
+    <section class="projetsShow__info">
 
-    <a href="{{ path('app_admin_projets_edit', {'id': projet.id}) }}">edit</a>
+        <div class="projetsShow__info--tag">
 
-    {{ include('admin/projets/_delete_form.html.twig') }}
+            <div class="tag__categorie">
+                <p class="texte texte--16">{{projet.categorie.categorie}}</p>
+            </div>
+
+            <div class="tag__technologie">
+                <p class="texte texte--16">
+                    {% for techno in projet.technologie %}
+                        {% if techno == projet.technologie|last %}
+                            
+                            {{techno.technologie}}
+
+                            {% else %}
+                                {{techno.technologie}} -
+                                
+                        {% endif %}
+                        {% else %}
+                        
+                        Aucun language necessaire pour ce projet
+
+                    {% endfor %}
+                </p>
+            </div>
+
+        </div>
+
+        <div class="projetsShow__info--description">
+            <p class="texte texte--16">{{projet.description}}</p>
+        </div>
+
+        <div class="projetsShow__info--bouton">
+            <a href="{{projet.lien}}" class="bouton bouton--primary">Accéder au projet</a>
+            <a href="https://github.com/JamsJam/{{projet.github}}" class="bouton bouton--github">Repository</a>
+        </div>
+
+        <div class="projetsShow__info--bouton">
+            <a href="{{ path('app_admin_projets_edit', {'id': projet.id}) }}" class="bouton bouton--info">Modifier</a>
+
+            {{ include('admin/projets/_delete_form.html.twig') }}
+        </div>
+        <a href="{{ path('app_admin_projets_index') }}" class="bouton bouton--secondary projetsShow__back">Retour</a>
+        
+    </section>
+
+
+    
+    
 {% endblock %}

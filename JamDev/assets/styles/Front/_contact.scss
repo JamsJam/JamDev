@@ -36,6 +36,7 @@
         .form__bouton{
             
             display: flex;
+            flex-direction: row-reverse;
             gap: 2rem;
             margin-block: 2rem;
         }

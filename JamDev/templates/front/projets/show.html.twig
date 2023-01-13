@@ -1,9 +1,61 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{parent() }}Mes projets | {% endblock %}
+{% block title %}{{parent() }}Mes projets | {{projet.titre}} {% endblock %}
 
 {% block body %}
-    <h1></h1>
-    <section></section>
-    <section></section>
+    <h1 class="titre titre--64"> {{projet.titre}} </h1>
+    <section class="projetsShow__image">
+        
+            <div class="projetsShow__image--aperçu">
+                <img class="image--cover" src="{{asset("build/images/" ~ dossier[projet.categorie.id] ~ "/" ~ imgs[0] )}}"  alt="">
+            </div>
+            <div class="projetsShow__image--aperçu">
+                <img class="image--aperçu" src="{{asset("build/images/" ~ dossier[projet.categorie.id] ~ "/" ~ imgs[1] )}}"  alt=""> 
+                <img class="image--aperçu" src="{{asset("build/images/" ~ dossier[projet.categorie.id] ~ "/" ~ imgs[0] )}}"  alt="">
+                <img class="image--aperçu" src="{{asset("build/images/" ~ dossier[projet.categorie.id] ~ "/" ~ imgs[2] )}}"  alt="">
+            </div> 
+
+    </section>
+
+    <section class="projetsShow__info">
+
+        <div class="projetsShow__info--tag">
+
+            <div class="tag__categorie">
+                <p class="texte texte--16">{{projet.categorie.categorie}}</p>
+            </div>
+
+            <div class="tag__technologie">
+                <p class="texte texte--16">
+                    {% for techno in projet.technologie %}
+                        {% if techno == projet.technologie|last %}
+                            
+                            {{techno.technologie}}
+
+                            {% else %}
+                                {{techno.technologie}} -
+                                
+                        {% endif %}
+                        {% else %}
+                        
+                        Aucun langage nécessaire pour ce projet
+
+                    {% endfor %}
+                </p>
+            </div>
+
+        </div>
+
+        <div class="projetsShow__info--description">
+            <p class="texte texte--16">{{projet.description}}</p>
+        </div>
+
+        <div class="projetsShow__info--bouton">
+            <a href="{{projet.lien}}" class="bouton bouton--primary">Accéder au site</a>
+            <a href="https://github.com/JamsJam/{{projet.github}}" class="bouton bouton--github">Repository</a>
+        </div>
+
+        <a href="{{path("app_front_catalogue",{"categorie" : projetC.categorie.id})}}" class="bouton bouton--secondary projetsShow__back">Retour</a>
+        
+    </section>
 {% endblock %}

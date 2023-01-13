@@ -77,7 +77,33 @@ class ProjetsRepository extends ServiceEntityRepository
         $stmt = $conn->prepare($sql);
         $result = $stmt->executeQuery(['value' => "%".$value."%"]);
         return $result->fetchAllAssociative();
-   }
+    }
+
+   public function SearchId(Int $categorie, mixed $value): array
+   {
+        $conn = $this->getEntityManager()->getConnection();
+
+        $sql = '
+        SELECT DISTINCT p.id  FROM projets AS p
+
+        LEFT JOIN projets_technologie AS pt 
+            ON p.id = pt.projets_id
+        JOIN technologie AS t 
+            ON pt.technologie_id = t.id
+
+        WHERE p.categorie_id = :categorie
+            AND 
+            (p.titre LIKE :value
+            OR t.technologie LIKE :value)
+
+        ';
+        
+        $stmt = $conn->prepare($sql);
+        $result = $stmt->executeQuery(['value' => "%".$value."%" ,'categorie' => $categorie]);
+        return $result->fetchAllAssociative();
+    }
+
+
 
 
 //    /**

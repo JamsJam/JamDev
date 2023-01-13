@@ -9,11 +9,16 @@
     font-family: $font-texte;
 
 }
+
+
+h1,h2{
+    color: $primary-35;
+}
 a{
     text-decoration: none;
     color : black;
     &:hover{
         color:none;
-    
+        
     }
-}
+    }

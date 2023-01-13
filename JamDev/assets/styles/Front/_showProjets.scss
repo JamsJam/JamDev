@@ -1,0 +1,96 @@
+@use "../abstract/" as *;
+
+.projetsShow{
+
+    &__image{
+        @extend %flex-column-around-center;
+        gap: 2rem;
+        
+        
+
+        
+
+        &--aperçu{
+
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+
+            .image{
+                
+
+                
+                &--aperçu{
+                    width: clamp(5rem, 3.2949rem + 8.5256vw, 13.3125rem);
+                }
+            }
+        }
+    }
+
+    &__info{
+        @extend %flex-column-around-center;
+        gap: 3rem;
+        margin-block-start: 3rem;
+
+        &--tag{
+
+            @extend %flex-row-evenly-center;
+            gap:1rem;
+            text-align: center;
+
+            .tag{
+                &__categorie,
+                &__technologie{
+                    border-radius: 10px;
+                    border: $primary-35 4px solid;
+                    box-shadow: 3px 3px 10px 0px hsl(1deg 61% 15% / 50%);
+
+                    p{
+                        margin-block: 1rem;
+                        padding-inline: 1rem;
+                        
+                    }
+                }
+            }
+        }
+
+        &--description{
+            border-radius: 10px;
+            border: $primary-35 4px solid;
+            box-shadow: 3px 3px 10px 0px hsl(1deg 61% 15% / 50%);
+
+            p{
+                margin-block: 2rem;
+                padding-inline: 1rem;
+            }
+        }
+
+        &--bouton{
+            width:clamp(18.75rem, 5.9295rem + 64.1026vw, 81.25rem);;
+            @extend %flex-row-between-center;
+            
+            gap:2rem;
+
+            @media screen and (width < 481px){
+                flex-direction: column-reverse;
+                align-items: center;
+            }
+        }
+    }
+
+
+
+    &__back{
+        margin-block-end: 4rem;
+    }
+}
+
+//? box sizing
+
+.projetsShow__image--aperçu .image--cover,
+.projetsShow__image--aperçu,
+.projetsShow__info--tag,
+.projetsShow__info--description
+{
+    width: clamp(15.625rem, 8.5737rem + 35.2564vw, 50rem);
+}

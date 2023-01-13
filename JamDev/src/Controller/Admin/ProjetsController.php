@@ -149,21 +149,19 @@ class ProjetsController extends AbstractController
         ]);
     }
 
+    
     #[Route('/{id}', name: 'app_admin_projets_show', methods: ['GET'])]
     public function show(Projets $projet): Response
     {
         $imgs = explode('--',$projet->getImages());
         $dossier = [1 => "siteComplet", 2 => "interface" ,3 =>"POC", 4 => "autres" ];
         
-        $image1 = $this->getParameter($dossier[$projet->getCategorie()->getId()])."\\".$imgs[0]; 
-        $image2 = $this->getParameter($dossier[$projet->getCategorie()->getId()])."\\".$imgs[1]; 
-        $image3 = $this->getParameter($dossier[$projet->getCategorie()->getId()])."\\".$imgs[2]; 
-        
-        $imgPaths = [$image1,$image2,$image3 ] ;
 
+        
         return $this->render('admin/projets/show.html.twig', [
             'projet'  =>  $projet,
-            'imgs'    =>  $imgPaths
+            'dossier' => $dossier,
+            'imgs'    =>  $imgs
         ]);
     }
 
@@ -245,4 +243,7 @@ class ProjetsController extends AbstractController
 
         return $this->redirectToRoute('app_admin_projets_index', [], Response::HTTP_SEE_OTHER);
     }
+
+    
+
 }

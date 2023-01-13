@@ -1,0 +1,84 @@
+@use '../abstract/' as *;
+
+.catalogue{
+
+    &__recherche{
+        @extend %flex-row-center;
+        gap:1rem;
+        margin-block:4rem;
+        flex-wrap: wrap;
+        #input-search{
+            width: clamp(18.75rem, 12.8165rem + 31.6456vw, 50rem);
+
+
+        }
+        @media screen and (width < 768px) {
+            flex-direction: column-reverse;
+        }
+    }
+
+    &__container{
+        min-height: 50vh;
+        padding-inline: 1rem;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px,40vw));
+        justify-content: space-around;
+        gap: 2rem;
+        
+        
+        @media screen and (width < 768px) {
+            
+            grid-template-columns: repeat(auto-fit, minmax(300px,65vw));
+        }
+    }
+
+    &__card{
+        @extend %flex-column-around-stretch;
+        // background-color: aqua;
+        border: #c0c0c08c 3px solid;
+        outline: transparent 7px solid;
+        box-shadow: $shadow;
+        transform: translateY(0);
+        transition: box-shadow 200ms ease-in-out,
+                    transform 200ms ease-in-out;
+
+        &:hover{
+            box-shadow: $shadow-hover;
+            transform: translateY(-8px);
+            border: transparent 3px solid;;
+            outline: $primary-35 7px solid;
+        }
+    }
+
+    &__bouton{
+        margin-block: 4rem;
+        @extend %flex-center;
+    }
+
+}
+.card{
+    
+    &--info{
+
+        @extend %flex-row-around-center;
+        padding-inline: 1rem ;
+        margin-block: 1rem 0.5rem;
+        gap: 1rem;
+
+        img{
+            width: max(calc((40vw/2) - 2rem), 130px);
+        }
+    }
+
+    &--infoText{
+        text-align: center;
+        height: 250px;
+        @extend %flex-column-around-center;
+    }
+    
+    &--titre{
+        text-align: center;
+        margin-block: 0.5rem 1rem;
+
+    }
+}

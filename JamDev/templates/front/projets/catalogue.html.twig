@@ -1,0 +1,128 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{parent() }}Mes projets | Catalogue{% endblock %}
+
+{% block body %}
+
+    <h1 class="titre titre--64">Catalogue : {{categorie.categorie}}</h1>
+
+
+    {# 
+    !   formulaire de recherche avec requette ajax   
+    todo    isoler fonctionnalité pour POC et tuto
+    #}
+
+    <section class="catalogue__recherche">
+        <button type="button" id="submit__search" class="bouton bouton--secondary">Recherche</button>
+        <input type="text"  id="input-search" class="input__text input--empty" placeholder="Rechercher un projet">
+    </section>
+
+    {#! display grid #}
+    <section class="catalogue__container">
+    
+        {% for projet in projets %}
+            
+            {#! grid cell on repeat #}
+                <a class="catalogue__card" id="{{projet.id}} " href="{{path("app_front_projets_show",{'id' : projet.id})}}">
+                    {# <div class="catalogue__card"> #}
+                        
+                        <div class="card--info">
+                            
+                            <img src="{{ asset("build/images/" ~ dossier[projet.categorie.id] ~ '/' ~ projet.images|split('--')[0]) }}" alt="" class="card--cover">
+                            
+                            <div class="card--infoText">
+                                
+                                <div class="card--techno">
+                                    <p class="texte texte--16">
+                                    {% for techno in projet.technologie %}
+                                        {% if techno == projet.technologie|last %}
+                                            
+                                            {{techno.technologie}}
+
+                                            {% else %}
+                                                {{techno.technologie}} -
+                                                
+                                        {% endif %}
+                                    {% endfor %}
+                                    </p>
+                                </div>
+                                
+                                <div class="card--description">
+                                    <p class="texte texte--16">{{projet.description|u.truncate(50, '... voir plus')}}</p>
+                                </div>
+
+                            </div>
+                        </div>
+                        
+                        <div class="card--titre">
+                            <p class="titre titre--24">{{projet.titre}}</p>
+                        </div>
+                    {# </div> #}
+                </a>
+        {% endfor %}
+    </section>
+    <div class="catalogue__bouton">
+        <a href="{{path("app_front_projets")}}" class="bouton bouton--secondary">Retour</a>
+    </div>
+
+{% endblock %}
+{% block script %}
+    {#!fetch recuperer les id sur : app_searchJson_projet  #}
+    <script>
+        let cards = document.querySelectorAll(".catalogue__card")
+        let inputSearch = document.querySelector("#input-search")  
+        let submitSearch = document.querySelector("#submit__search")  
+        let host = window.location.host
+        async function projetSearch(
+                                    valeur 
+                                ) 
+            {
+            if(!valeur){
+                cards.forEach(card => {
+                    card.removeAttribute("style")
+                });
+            }
+            else
+            {
+                const requete = await fetch( `http://${host}/api/projet`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                    body: new URLSearchParams ({
+                        categorie : {{ categorie.id }},
+                        valeur
+                    })
+                });
+                if (!requete.ok) {
+                    alert('une erreur est survenue')
+                } else {
+                    const donnees = await requete.json()
+                    let resultId = []
+                        for (const searchResult of donnees) {
+                            resultId.push(searchResult.id )
+                        }
+                    
+                    
+                    cards.forEach(card => {
+                        let id = card.getAttribute('id')
+                        
+                        if(! resultId.includes(+id)){
+                            card.style.display = "none"
+                        }else{
+                            card.removeAttribute("style")
+                        }
+                    });
+                }
+            }
+
+        }
+        submitSearch.addEventListener("click",()=>{
+
+            let value = inputSearch.value;
+
+            projetSearch(value)
+        })
+        
+    </script>
+{% endblock %}

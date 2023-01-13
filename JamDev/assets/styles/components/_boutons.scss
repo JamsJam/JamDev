@@ -12,7 +12,7 @@
 
     &--primary{
         background-color: $primary-25;
-        color : $secondary-95;
+        color : white;
         &:hover{
             background-color: $primary-15;
         }
@@ -56,6 +56,14 @@
         color : $info-95;
         &:hover{
             background-color: $info-45;
+        }
+    }
+
+    &--github{
+        color: $neutral-95;
+        background-color: $neutral-15;
+        &:hover{
+            background-color: $neutral-5;
         }
     }
 
