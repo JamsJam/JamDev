@@ -38,6 +38,9 @@ class Projets
     #[ORM\ManyToMany(targetEntity: Technologie::class, inversedBy: 'projets')]
     private Collection $Technologie;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $github = null;
+
     public function __construct()
     {
         $this->Technologie = new ArrayCollection();
@@ -160,6 +163,18 @@ class Projets
     public function removeTechnologie(Technologie $technologie): self
     {
         $this->Technologie->removeElement($technologie);
+
+        return $this;
+    }
+
+    public function getGithub(): ?string
+    {
+        return $this->github;
+    }
+
+    public function setGithub(?string $github): self
+    {
+        $this->github = $github;
 
         return $this;
     }
