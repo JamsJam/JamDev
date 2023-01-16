@@ -28,7 +28,7 @@
                         
                         <div class="card--info">
                             
-                            <img src="{{ asset("build/images/" ~ dossier[projet.categorie.id] ~ '/' ~ projet.images|split('--')[0]) }}" alt="" class="card--cover">
+                            <img src="{{ asset("images/" ~ dossier[projet.categorie.id] ~ '/' ~ projet.images|split('--')[0]) }}" alt="" class="card--cover">
                             
                             <div class="card--infoText">
                                 
@@ -67,62 +67,65 @@
 
 {% endblock %}
 {% block script %}
-    {#!fetch recuperer les id sur : app_searchJson_projet  #}
+    
     <script>
         let cards = document.querySelectorAll(".catalogue__card")
         let inputSearch = document.querySelector("#input-search")  
         let submitSearch = document.querySelector("#submit__search")  
         let host = window.location.host
-        async function projetSearch(
-                                    valeur 
-                                ) 
-            {
-            if(!valeur){
-                cards.forEach(card => {
-                    card.removeAttribute("style")
-                });
-            }
-            else
-            {
-                const requete = await fetch( `http://${host}/api/projet`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded'
-                    },
-                    body: new URLSearchParams ({
-                        categorie : {{ categorie.id }},
-                        valeur
-                    })
-                });
-                if (!requete.ok) {
-                    alert('une erreur est survenue')
-                } else {
-                    const donnees = await requete.json()
-                    let resultId = []
-                        for (const searchResult of donnees) {
-                            resultId.push(searchResult.id )
-                        }
-                    
-                    
+
+        {#! fetch recuperer les id sur : app_searchJson_projet  #}
+            async function projetSearch(
+                                        valeur 
+                                    ) 
+                {
+                if(!valeur){
                     cards.forEach(card => {
-                        let id = card.getAttribute('id')
-                        
-                        if(! resultId.includes(+id)){
-                            card.style.display = "none"
-                        }else{
-                            card.removeAttribute("style")
-                        }
+                        card.removeAttribute("style")
                     });
                 }
+                else
+                {
+                    const requete = await fetch( `http://${host}/api/projet`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded'
+                        },
+                        body: new URLSearchParams ({
+                            categorie : {{ categorie.id }},
+                            valeur
+                        })
+                    });
+                    if (!requete.ok) {
+                        alert('une erreur est survenue')
+                    } else {
+                        const donnees = await requete.json()
+                        let resultId = []
+                            for (const searchResult of donnees) {
+                                resultId.push(searchResult.id )
+                            }
+                        
+                        
+                        cards.forEach(card => {
+                            let id = card.getAttribute('id')
+                            
+                            if(! resultId.includes(+id)){
+                                card.style.display = "none"
+                            }else{
+                                card.removeAttribute("style")
+                            }
+                        });
+                    }
+                }
+
             }
+            submitSearch.addEventListener("click",()=>{
 
-        }
-        submitSearch.addEventListener("click",()=>{
+                let value = inputSearch.value;
 
-            let value = inputSearch.value;
+                projetSearch(value)
+            })
+        {#! Fin requette ajax  #}
 
-            projetSearch(value)
-        })
-        
     </script>
 {% endblock %}

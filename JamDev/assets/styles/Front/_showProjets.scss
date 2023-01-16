@@ -94,3 +94,10 @@
 {
     width: clamp(15.625rem, 8.5737rem + 35.2564vw, 50rem);
 }
+
+//? selected images
+
+.selected--image{
+    border: 0.25rem $primary-35 solid;
+    box-shadow: $shadow-hover;
+}

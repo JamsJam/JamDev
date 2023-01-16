@@ -7,12 +7,12 @@
     <section class="projetsShow__image">
         
             <div class="projetsShow__image--aperçu">
-                <img class="image--cover" src="{{asset("build/images/" ~ dossier[projet.categorie.id] ~ "/" ~ imgs[0] )}}"  alt="">
+                <img class="image--cover" src="{{asset("images/" ~ dossier[projet.categorie.id] ~ "/" ~ imgs[0] )}}"  alt="">
             </div>
             <div class="projetsShow__image--aperçu">
-                <img class="image--aperçu" src="{{asset("build/images/" ~ dossier[projet.categorie.id] ~ "/" ~ imgs[1] )}}"  alt=""> 
-                <img class="image--aperçu" src="{{asset("build/images/" ~ dossier[projet.categorie.id] ~ "/" ~ imgs[0] )}}"  alt="">
-                <img class="image--aperçu" src="{{asset("build/images/" ~ dossier[projet.categorie.id] ~ "/" ~ imgs[2] )}}"  alt="">
+                <img class="image--aperçu" src="{{asset("images/" ~ dossier[projet.categorie.id] ~ "/" ~ imgs[1] )}}"  alt=""> 
+                <img class="image--aperçu selected--image" src="{{asset("images/" ~ dossier[projet.categorie.id] ~ "/" ~ imgs[0] )}}"  alt="">
+                <img class="image--aperçu" src="{{asset("images/" ~ dossier[projet.categorie.id] ~ "/" ~ imgs[2] )}}"  alt="">
             </div> 
 
     </section>
@@ -67,4 +67,32 @@
 
     
     
+{% endblock %}
+{% block script %}
+    <script>
+    
+        {#? Selection image  #}
+            let imgCover = document.querySelector("#image--cover")
+            let imgPreview = document.querySelectorAll(".image--aperçu")
+
+            window.addEventListener("load", () => {
+                imgPreview.forEach(preview => {
+                    
+                    preview.addEventListener("click",(e)=>{
+                        let imgSelectedSrc = e.target.getAttribute('src')
+                        
+                        if ( imgCover.getAttribute('src') !== imgSelectedSrc) {
+                            imgPreview.forEach(element => {
+                                element.classList.remove("selected--image")
+                            });
+                            imgCover.setAttribute('src', imgSelectedSrc)
+                            e.target.classList.add("selected--image")
+                        }
+
+                    })
+                });
+            })
+
+        {#? fin selection image #}
+    </script>
 {% endblock %}
