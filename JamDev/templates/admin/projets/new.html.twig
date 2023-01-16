@@ -53,6 +53,26 @@
                 {% endif %}
             {% endif %}
 
+        {#! Form github  #}            
+            {% if form.github.vars.valid == true and form.github.vars.value|length > 0 %}
+                {{ form_row(form.github,{ 'attr': {'class': 'input__text input--success formProjet__part1--github'} } )}}
+                
+            {% else %}
+                
+                {% if form_errors(form.github) %}
+
+                    {{ form_row(form.github,{ 'attr': {'class': 'input__text input--danger formProjet__part1--github'} } )}}
+                
+                {% else %}
+                
+                    {% if form.github.vars.value|length == 0 %}
+                
+                        {{ form_row(form.github,{ 'attr': {'class': 'input__text input--empty formProjet__part1--github'} } )}}
+
+                    {% endif %}
+                {% endif %}
+            {% endif %}
+
         {#! form description #}
             {% if form.description.vars.valid == true and form.description.vars.value|length > 0 %}
                 {{ form_row(form.description,{ 'attr': {'class': 'input__textarea input--success formProjet__part1--description'} } )}}
