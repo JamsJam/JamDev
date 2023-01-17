@@ -36,7 +36,7 @@ class ProjetsType extends AbstractType
                     "placeholder" => "Entrer le lien du projet"
                 ]
             ])
-            ->add('github',UrlType::class,[
+            ->add('github',TextType::class,[
                 "required" => false,
                 "label" => false,
                 "attr" => [
