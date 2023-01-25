@@ -35,6 +35,7 @@
     &__block{
         @extend %flex-column-between-start;
         flex-wrap: nowrap;
+        flex-wrap: -webkit-nowrap;
         width: 550px;
         padding-inline: 0.5rem;
         min-height: 200px;
@@ -92,12 +93,15 @@
         &__container{
             flex-direction: column;
             align-items: center;
+            flex-direction: -webkit-column;
+            align-items: -webkit-center;
             padding-inline: 0.5rem;
             margin-block-end: 2rem
         }
         
         &__block{
             justify-content: center;
+            justify-content: -webkit-center;
             width: 71.6vw;
             padding-inline: 0.5rem;
             min-height: 200px;
@@ -110,6 +114,9 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        display: -webkit-flex;
+        flex-direction: -webkit-column;
+        align-items: -webkit-center;
 
         &__mockup{
         

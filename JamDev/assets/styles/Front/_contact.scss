@@ -37,6 +37,8 @@
             
             display: flex;
             flex-direction: row-reverse;
+            display: -webkit-flex;
+            flex-direction: -webkit-row-reverse;
             gap: 2rem;
             margin-block: 2rem;
         }

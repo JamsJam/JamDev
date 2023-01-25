@@ -46,6 +46,7 @@
     &__bouton{
         @extend %flex-row-around-center;
         flex-wrap: wrap;
+        flex-wrap: -webkit-wrap;
         width: max(45vw,280px);
         button,a{
             margin-block: 0.5rem ;
@@ -60,6 +61,7 @@
 @media screen and (width < 700px) {
     .connexion__bouton{
         flex-direction: column;
+        flex-direction: -webkit-column;
 
     }
 }
