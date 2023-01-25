@@ -8,7 +8,7 @@ footer{
 
         &__content{
             @extend %flex-column-evenly-center;
-            
+            margin-block-end: 1rem;
         }
         
         &__nav{
