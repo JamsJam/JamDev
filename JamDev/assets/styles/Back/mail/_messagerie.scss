@@ -41,6 +41,7 @@
     @media screen and (width < 768px) {
         &__container{
             flex-direction: column;
+            flex-direction: -webkit-column;
             gap: 2rem
         }
     }

@@ -87,6 +87,7 @@
                 else
                 {
                     const requete = await fetch( `https://${host}/api/projet`, {
+                    const requete = await fetch( `http://${host}/api/projet`, {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/x-www-form-urlencoded'

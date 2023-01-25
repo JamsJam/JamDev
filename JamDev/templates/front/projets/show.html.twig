@@ -7,12 +7,12 @@
     <section class="projetsShow__image">
         
             <div class="projetsShow__image--aperçu">
-                <img id="image--cover" class="image--cover" src="{{ asset("images/" ~ dossier[projet.categorie.id] ~ '/' ~ projet.images|split('--')[0]) }}"  alt="">
+                <img id="image--cover" class="image--cover" src="{{asset("images/" ~ dossier[projet.categorie.id] ~ "/" ~ imgs[0] )}}"  alt="">
             </div>
             <div class="projetsShow__image--aperçu">
-                <img class="image--aperçu" src="{{ asset("images/" ~ dossier[projet.categorie.id] ~ '/' ~ projet.images|split('--')[1]) }}"  alt=""> 
-                <img class="image--aperçu selected--image" src="{{ asset("images/" ~ dossier[projet.categorie.id] ~ '/' ~ projet.images|split('--')[0]) }}"  alt="">
-                <img class="image--aperçu" src="{{ asset("images/" ~ dossier[projet.categorie.id] ~ '/' ~ projet.images|split('--')[2]) }}"  alt="">
+                <img class="image--aperçu" src="{{asset("images/" ~ dossier[projet.categorie.id] ~ "/" ~ imgs[1] )}}"  alt=""> 
+                <img class="image--aperçu selected--image" src="{{asset("images/" ~ dossier[projet.categorie.id] ~ "/" ~ imgs[0] )}}"  alt="">
+                <img class="image--aperçu" src="{{asset("images/" ~ dossier[projet.categorie.id] ~ "/" ~ imgs[2] )}}"  alt="">
             </div> 
 
     </section>

@@ -119,6 +119,9 @@
     .accueil__services,
     .accueil__projets{
 
+        display: -webkit-flex;
+        flex-direction: -webkit-column;
+        align-items: -webkit-center;
         display: flex;
         flex-direction: column;
         align-items: center;

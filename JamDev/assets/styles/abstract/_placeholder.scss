@@ -6,6 +6,9 @@
 
 
 %flex-center{
+    display: -webkit-flex;
+    justify-content: -webkit-center;
+    align-items: -webkit-center;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -15,6 +18,10 @@
 
 
     %flex-row-center{
+        display: -webkit-flex;
+        flex-direction: -webkit-row;
+        align-items: -webkit-center;
+        justify-content: -webkit-center;
         display: flex;
         flex-direction: row;
         align-items: center;
@@ -24,6 +31,10 @@
 
 
     %flex-row-evenly-center{
+        display: -webkit-flex;
+        flex-direction: -webkit-row;
+        justify-content: -webkit-space-evenly;
+        align-items: -webkit-center;
         display: flex;
         flex-direction: row;
         justify-content: space-evenly;
@@ -31,6 +42,10 @@
     }
 
     %flex-row-evenly-start{
+        display: -webkit-flex;
+        flex-direction: -webkit-row;
+        justify-content: -webkit-space-evenly;
+        align-items: -webkit-start;
         display: flex;
         flex-direction: row;
         justify-content: space-evenly;
@@ -38,6 +53,10 @@
     }
 
     %flex-row-between-center{
+        display: -webkit-flex;
+        flex-direction: -webkit-row;
+        justify-content: -webkit-space-between;
+        align-items: -webkit-center;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
@@ -45,6 +64,10 @@
     }
 
     %flex-row-around-center{
+        display: -webkit-flex;
+        flex-direction: -webkit-row;
+        justify-content: -webkit-space-around;
+        align-items: -webkit-center;
         display: flex;
         flex-direction: row;
         justify-content: space-around;
@@ -55,12 +78,19 @@
 //! Flex-column
 
     %flex-column-center{
+        display: -webkit-flex;
+        flex-direction: -webkit-column;
+        align-items: -webkit-center;
         display: flex;
         flex-direction: column;
         align-items: center;
     }
 
     %flex-column-evenly-center{
+        display: -webkit-flex;
+        flex-direction: -webkit-column;
+        justify-content: -webkit-space-evenly;
+        align-items: -webkit-center;
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
@@ -68,6 +98,10 @@
     }
 
     %flex-column-between-center{
+        display: -webkit-flex;
+        flex-direction: -webkit-column;
+        justify-content: s-webkit-pace-between;
+        align-items: -webkit-center;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -75,6 +109,10 @@
     }
 
     %flex-column-between-start{
+        display: -webkit-flex;
+        flex-direction: -webkit-column;
+        justify-content: -webkit-space-between;
+        align-items: -webkit-start;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -82,6 +120,10 @@
     }
 
     %flex-column-around-center{
+        display: -webkit-flex;
+        flex-direction: -webkit-column;
+        justify-content: -webkit-space-around;
+        align-items: -webkit-center;
         display: flex;
         flex-direction: column;
         justify-content: space-around;
@@ -89,6 +131,10 @@
     }
 
     %flex-column-around-stretch{
+        display: -webkit-flex;
+        flex-direction: -webkit-column;
+        justify-content: -webkit-space-around;
+        align-items:-webkit-stretch;
         display: flex;
         flex-direction: column;
         justify-content: space-around;

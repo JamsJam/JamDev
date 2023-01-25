@@ -105,26 +105,27 @@ class ProjetsController extends AbstractController
             //*     =====================================
             //*     =====================================
             
-            for ($i=0; $i < 3; $i++) { 
+                for ($i=0; $i < 3; $i++) { 
 
-                $file = $form->get('image'.$i+1)->getData();
-                
-                //? 1) renommer les images
-                $fileNewName = date("YmdHis").'-'.Uniqid().'-'.rand(100,999).'-'.$file->getClientOriginalName();
-                
-                //? 2) determiner un dossier pour chaque categorie
-                //? 3) copier les images dans le dossier
-                $file->move(
-                    $this->getParameter($dossier[$categorieId]),
-                    $fileNewName
-                );
-                //? 4) recuperer les noms des images,  
-                array_push($nomImages, $fileNewName);
+                    $file = $form->get('image'.$i+1)->getData();
+                    
+                    //? 1) renommer les images
+                    $fileNewName = date("YmdHis").'-'.Uniqid().'-'.rand(100,999).'-'.$file->getClientOriginalName();
+                    
+                    //? 2) determiner un dossier pour chaque categorie
+                    //? 3) copier les images dans le dossier
+                    
+                    $file->move(
+                        $this->getParameter($dossier[$categorieId]),
+                        $fileNewName
+                    );
+                    //? 4) recuperer les noms des images,  
+                    array_push($nomImages, $fileNewName);
 
-            }
-            //? 5)  setImages 
-            $projet->setImages(implode("--", $nomImages));
-            // dd($projet);
+                    }
+                //? 5)  setImages 
+                $projet->setImages(implode("--", $nomImages));
+                
 
             
             //*     =================================

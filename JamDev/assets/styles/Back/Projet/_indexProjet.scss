@@ -3,6 +3,7 @@
 .chercheProjets{
     @extend %flex-center;
     flex-direction: row-reverse;
+    flex-direction: -webkit-row-reverse;
     gap: 1rem;
     margin-block: 5rem;
     flex-wrap: wrap;
@@ -17,8 +18,11 @@
 .projetIndex {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 2rem;
     justify-items: center;
+    display: -webkit-grid;
+    grid-template-columns: -webkit-repeat(auto-fit, minmax(260px, 1fr));
+    justify-items: -webkit-center;
+    gap: 2rem;
     min-height: 70vh;
     padding-inline: 1rem;
 

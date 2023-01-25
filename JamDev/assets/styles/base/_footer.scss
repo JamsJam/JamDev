@@ -8,12 +8,13 @@ footer{
 
         &__content{
             @extend %flex-column-evenly-center;
-            
+            margin-block-end: 1rem;
         }
         
         &__nav{
             @extend %flex-row-center;
             align-items: flex-start;
+            align-items: -webkit-flex-start;
             
             ul{
                 margin: 2rem 1rem;
@@ -50,8 +51,12 @@ footer{
     footer{
         flex-direction: column;
         justify-content: space-around;
+        flex-direction: -webkit-column;
+        justify-content: -webkit-space-around;
     }
-    .footer__logo{display: none;}
+    .footer__logo{
+        display: none;
+    }
     
 }
 
@@ -63,6 +68,9 @@ footer{
             flex-direction: column;
             justify-content: center;
             align-items: flex-start;
+            flex-direction: -webkit-column;
+            justify-content: -webkit-center;
+            align-items: -webkit-flex-start;
         }
     }
     
