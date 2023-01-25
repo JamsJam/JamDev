@@ -36,6 +36,13 @@ class ProjetsType extends AbstractType
                     "placeholder" => "Entrer le lien du projet"
                 ]
             ])
+            ->add('github',TextType::class,[
+                "required" => false,
+                "label" => false,
+                "attr" => [
+                    "placeholder" => "Entrer le depot git associé"
+                ]
+            ])
             ->add('description',TextareaType::class,[
                 "required" => false,
                 "label" => false,

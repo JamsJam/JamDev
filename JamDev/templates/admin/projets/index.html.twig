@@ -18,7 +18,7 @@
         {% for projet in projets %}
             <div class="projetIndex__card">
                 <h2 class="titre titre--24"> {{projet.titre}} </h2>
-                <img src="{{asset("build/images/" ~ dossier[projet.categorie.id] ~ '/' ~ projet.images|split('--')[0])}}" alt="" class="projetIndex__img">
+                <img src="{{asset("images/" ~ dossier[projet.categorie.id] ~ '/' ~ projet.images|split('--')[0])}}" alt="" class="projetIndex__img">
                 <a href="{{ path('app_admin_projets_show', { 'id' : projet.id}) }}" class="bouton bouton--secondary">Voir plus</a>
                 <svg  height="10px" viewBox="0 0 34 10">
                     <circle cx="5" cy="5" r="5"/>
